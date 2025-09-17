@@ -12,6 +12,7 @@ import tools.Util;
  */
 public class JDlgUsuarios extends javax.swing.JDialog {
 
+    private boolean procurar = false;
     /**
      * Creates new form JDlgUsuarios
      */
@@ -243,6 +244,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
          Util.perguntar("Deseja exluir");
+         
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
@@ -253,7 +255,11 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
-         Util.mensagem("Se não colocou nada (instanciou)");
+       
+        // Util.mensagem("Se não colocou nada (instanciou)");
+            procurar = true;
+            JDlgUsuariosPesquisar jDlgUsuariosPesquisar  = new JDlgUsuariosPesquisar(null, true);
+            jDlgUsuariosPesquisar.setVisible(true);
 
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 

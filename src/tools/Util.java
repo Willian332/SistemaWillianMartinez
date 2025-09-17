@@ -38,7 +38,6 @@ public class Util {
         JOptionPane.showMessageDialog(null, cad);
     }
     public static void perguntar(String cad){
-        JOptionPane.showConfirmDialog(null, cad);
-     
+        JOptionPane.showConfirmDialog(null, cad, "teste", JOptionPane.YES_NO_OPTION, JOptionPane.YES_NO_CANCEL_OPTION);
     }
 }
