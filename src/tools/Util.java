@@ -34,10 +34,11 @@ public class Util {
             
         }
     }
-    public static void mensagem(String cad){
-        JOptionPane.showMessageDialog(null, cad);
+    public static boolean mensagem(String cad){
+        return JOptionPane.showConfirmDialog(null, cad, "teste", JOptionPane.YES_NO_OPTION, JOptionPane.YES_NO_CANCEL_OPTION) == 0;
+        
     }
-    public static void perguntar(String cad){
-        JOptionPane.showConfirmDialog(null, cad, "teste", JOptionPane.YES_NO_OPTION, JOptionPane.YES_NO_CANCEL_OPTION);
+    public static String perguntar(String cad){
+        return JOptionPane.showInputDialog(null, cad);
     }
 }
