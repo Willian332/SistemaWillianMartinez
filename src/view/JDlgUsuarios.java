@@ -249,7 +249,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-         Util.mensagem("Deseja exluir seu usuario?");
+         Util.perguntar("Deseja exluir seu usuario?");
          
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
