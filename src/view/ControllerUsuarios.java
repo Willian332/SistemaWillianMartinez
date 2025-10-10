@@ -4,7 +4,7 @@
  */
 package view;
 
-import bean.Usuarios;
+
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 

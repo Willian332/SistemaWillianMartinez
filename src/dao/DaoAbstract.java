@@ -16,32 +16,6 @@ import java.sql.Connection;
  */
 public abstract class DaoAbstract {
     
-     protected Connection cnt;
-    
-    public DaoAbstract(){
-   try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url, user, pass;
-            url = "jdbc:mysql://localhost:3306/db_willian_martinez";
-            user = "root";
-            pass = "12345";
-            cnt = DriverManager.getConnection(url, user, pass);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UsuariosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuariosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-//            try {
-//        Class.forName("com.mysql.cj.jdbc.Driver");
-//        String url = "jdbc:mysql://localhost:3306/db_willian_martinez";
-//        cnt = DriverManager.getConnection(url, "root", "");
-//    } catch (ClassNotFoundException | SQLException e) {
-//        throw new RuntimeException("Falha ao abrir conexão", e);
-//    }
-    
-    }
-    
      public abstract void insert(Object object);
      public abstract void update(Object object);    
      public abstract void delete(Object object);
