@@ -7,6 +7,7 @@ package view;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
+import bean.WamUsuario;
 
 /**
  *
@@ -36,18 +37,18 @@ public class ControllerUsuarios extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Usuarios usuarios = (Usuarios) lista.get(rowIndex);
+        WamUsuario usuarios = (WamUsuario) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return usuarios.getWam_idusuarios();
+            return usuarios.getWamIdUsuario();
         }
         if (columnIndex == 1) {
-            return usuarios.getWam_nome();
+            return usuarios.getWamNome();
         }
         if (columnIndex == 2) {
-            return usuarios.getWam_cpf();
+            return usuarios.getWamCpf();
         }
         if (columnIndex == 3) {
-            return usuarios.getWam_dataNascimento();
+            return usuarios.getWamDataNascimento();
         }
         return "";
     }

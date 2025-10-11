@@ -5,17 +5,10 @@
 package dao;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
-import java.sql.ResultSet;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Date;
-import java.util.ArrayList;
+import bean.WamUsuario;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -25,27 +18,51 @@ public class UsuariosDAO extends DaoAbstract{
 
     @Override
     public void insert(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session.beginTransaction();
+        session.save(object);
+        session.getTransaction().commit();
     }
 
     @Override
     public void update(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session.beginTransaction();
+        session.flush();
+        session.clear();
+        session.update(object);
+        session.getTransaction().commit();
     }
 
     @Override
     public void delete(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         session.beginTransaction();
+        session.flush();
+        session.clear();
+        session.delete(object);
+        session.getTransaction().commit();
     }
 
     @Override
     public Object list(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamUsuario.class);
+        criteria.add(Restrictions.eq("wam_idUsuarios", id) );
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
     }
 
     @Override
     public Object listAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamUsuario.class);
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+     public static void main(String[] args) {
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        usuariosDAO.listAll();
+        System.out.println("teste ok");
     }
 
     

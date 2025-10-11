@@ -30,7 +30,8 @@ public class WamUsuario  implements java.io.Serializable {
      private String wamCpf;
      private Date wamDataNascimento;
      private Integer wamNivel;
-     private Boolean wamAtivo;
+     private String wamAtivo;
+     private String wamSenha;
 
     public WamUsuario() {
     }
@@ -40,13 +41,14 @@ public class WamUsuario  implements java.io.Serializable {
         this.wamNome = wamNome;
         this.wamCpf = wamCpf;
     }
-    public WamUsuario(String wamNome, String wamApelido, String wamCpf, Date wamDataNascimento, Integer wamNivel, Boolean wamAtivo) {
+    public WamUsuario(String wamNome, String wamApelido, String wamCpf, Date wamDataNascimento, Integer wamNivel, String wamAtivo, String wamSenha) {
        this.wamNome = wamNome;
        this.wamApelido = wamApelido;
        this.wamCpf = wamCpf;
        this.wamDataNascimento = wamDataNascimento;
        this.wamNivel = wamNivel;
        this.wamAtivo = wamAtivo;
+       this.wamSenha = wamSenha;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -113,13 +115,22 @@ public class WamUsuario  implements java.io.Serializable {
 
     
     @Column(name="wam_ativo")
-    public Boolean getWamAtivo() {
+    public String getWamAtivo() {
         return this.wamAtivo;
     }
     
-    public void setWamAtivo(Boolean wamAtivo) {
+    public void setWamAtivo(String wamAtivo) {
         this.wamAtivo = wamAtivo;
     }
+
+    /**
+     * @return the wamSenha
+     */
+    public String getWamSenha() {
+        return wamSenha;
+    }
+    
+    
 
 
 

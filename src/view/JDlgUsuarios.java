@@ -4,6 +4,9 @@
  */
 package view;
 
+import bean.WamUsuario;
+import tools.Util;
+import javax.swing.JOptionPane;
 import tools.Util;
 
 /**
@@ -27,7 +30,41 @@ public class JDlgUsuarios extends javax.swing.JDialog {
   
 
     }
-
+    
+    public WamUsuario viewBean() {
+        WamUsuario wamUsuario = new WamUsuario();
+        wamUsuario.setWamIdUsuario(Util.strParaInt(jTxtCodigo.getText() ));
+        int codigo = Util.strParaInt(jTxtCodigo.getText());
+        //wamUsuario.setW(codigo);
+        wamUsuario.setWamNome(jTxtNome.getText());
+        wamUsuario.setWamApelido(jTxtApelido.getText());
+        wamUsuario.setWamCpf(jFormattedTextFieldCPF.getText());
+        wamUsuario.setWamDataNascimento(Util.strToDate(jFormattedTextFieldData.getText()));
+        //wamUsuario.setWam(jPwfSenha.getText());
+        wamUsuario.setWamNivel(jCBxNivel.getSelectedIndex());
+        if (jCheckBoxAtivo.isSelected() == true) {
+            wamUsuario.setWamAtivo("S");
+        } else {
+            wamUsuario.setWamAtivo("N");
+        }
+        return null;
+    }
+    
+    public void beanView(WamUsuario wamUsuario) {
+        jTxtCodigo.setText(Util.intParaString(wamUsuario.getWamIdUsuario()));
+        jTxtNome.setText(wamUsuario.getWamNome());
+        jTxtApelido.setText(wamUsuario.getWamApelido());
+        jFormattedTextFieldCPF.setText(wamUsuario.getWamCpf());
+        jFormattedTextFieldData.setText(Util.dataParaString(wamUsuario.getWamDataNascimento()));
+        jPwfSenha.setText(wamUsuario.getWamSenha());
+        jCBxNivel.setSelectedIndex(wamUsuario.getWamNivel());
+        jCheckBoxAtivo.setSelected(wamUsuario.getWamAtivo().equals("S"));
+        if (wamUsuario.getWamAtivo().equals("S") == true) {
+            jCheckBoxAtivo.setSelected(true);
+        } else {
+            jCheckBoxAtivo.setSelected(false);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

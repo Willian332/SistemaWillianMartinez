@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -16,6 +18,13 @@ import java.sql.Connection;
  */
 public abstract class DaoAbstract {
     
+    
+     Session session;
+
+    public DaoAbstract() {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        session = sessionFactory.openSession();        
+    }
      public abstract void insert(Object object);
      public abstract void update(Object object);    
      public abstract void delete(Object object);
