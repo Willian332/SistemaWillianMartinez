@@ -1,8 +1,8 @@
 package bean;
-// Generated 10/10/2025 15:04:07 by Hibernate Tools 4.3.1
+// Generated 11/10/2025 18:12:54 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
+import java.lang.Double;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,9 +34,9 @@ public class WamVendedor  implements java.io.Serializable {
      private String wamCpf;
      private Date wamDataNascimento;
      private String wamTelefone;
-     private BigDecimal wamComissao;
+     private Double wamComissao;
      private String wamNumero;
-     private Set wamVendas = new HashSet(0);
+    // private Set wamVendas = new HashSet(0);
 
     public WamVendedor() {
     }
@@ -46,14 +46,14 @@ public class WamVendedor  implements java.io.Serializable {
         this.wamNome = wamNome;
         this.wamCpf = wamCpf;
     }
-    public WamVendedor(String wamNome, String wamCpf, Date wamDataNascimento, String wamTelefone, BigDecimal wamComissao, String wamNumero, Set wamVendas) {
+    public WamVendedor(String wamNome, String wamCpf, Date wamDataNascimento, String wamTelefone, Double wamComissao, String wamNumero, Set wamVendas) {
        this.wamNome = wamNome;
        this.wamCpf = wamCpf;
        this.wamDataNascimento = wamDataNascimento;
        this.wamTelefone = wamTelefone;
        this.wamComissao = wamComissao;
        this.wamNumero = wamNumero;
-       this.wamVendas = wamVendas;
+       //this.wamVendas = wamVendas;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -110,11 +110,11 @@ public class WamVendedor  implements java.io.Serializable {
 
     
     @Column(name="wam_comissao", precision=5)
-    public BigDecimal getWamComissao() {
+    public Double getWamComissao() {
         return this.wamComissao;
     }
     
-    public void setWamComissao(BigDecimal wamComissao) {
+    public void setWamComissao(Double wamComissao) {
         this.wamComissao = wamComissao;
     }
 
@@ -128,14 +128,14 @@ public class WamVendedor  implements java.io.Serializable {
         this.wamNumero = wamNumero;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="wamVendedor")
-    public Set getWamVendas() {
-        return this.wamVendas;
-    }
-    
-    public void setWamVendas(Set wamVendas) {
-        this.wamVendas = wamVendas;
-    }
+//@OneToMany(fetch=FetchType.LAZY, mappedBy="wamVendedor")
+//    public Set getWamVendas() {
+//        return this.wamVendas;
+//    }
+//    
+//    public void setWamVendas(Set wamVendas) {
+//        this.wamVendas = wamVendas;
+//    }
 
 
 

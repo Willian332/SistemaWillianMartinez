@@ -4,6 +4,7 @@
  */
 package view;
 
+import bean.WamCliente;
 import tools.Util;
 
 /**
@@ -22,6 +23,61 @@ public class JDlgClientes extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         Util.habilitar(false,jTxtCodigo, jTxtCelular, jTxtCep, jTextEmail, jTxtCep, jTxtCidade, jTxtNome,
                 jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa, jTxtEstado,jFormattedTextDta,jFCpf, jBtnConfirmar, jBtnCancelar);
+    }
+    
+    
+      public WamCliente viewBean() {
+        WamCliente wamCliente = new WamCliente();
+        wamCliente.setIdCliente(Util.strParaInt(jTxtCodigo.getText() ));
+        int codigo = Util.strParaInt(jTxtCodigo.getText());
+    wamCliente.setIdCliente(codigo);
+    wamCliente.setWamNome(jTxtNome.getText());
+    wamCliente.setWamDataNascimento(Util.strParaDate(jFormattedTextDta.getText())); // CORRIGIDO
+    wamCliente.setWamRg(jTxtRg.getText());
+    wamCliente.setWamCpf(jFCpf.getText());
+    wamCliente.setWamSexo((String) jCbSexo.getSelectedItem());
+    wamCliente.setWamBairro(jTxtBairro.getText());
+    wamCliente.setWamTelefone(jTxtTelefone.getText());
+    wamCliente.setWamCelular(jTxtCelular.getText());
+    wamCliente.setWamEmail(jTextEmail.getText());
+    wamCliente.setWamEmpresa(jTxtEmpresa.getText());
+        
+        if (jCheckBox1.isSelected() == true) {
+            wamCliente.setWamAtivo("S");
+        } else {
+            wamCliente.setWamAtivo("N");
+        }
+     
+        return wamCliente;
+    }
+    
+    public void beanView(WamCliente wamCliente) {
+        
+        
+     jTxtCodigo.setText(Util.intParaString(wamCliente.getIdCliente()));
+    jTxtNome.setText(wamCliente.getWamNome());
+    jFormattedTextDta.setText(Util.dataParaString(wamCliente.getWamDataNascimento()));
+    jTxtRg.setText(wamCliente.getWamRg());
+    jFCpf.setText(wamCliente.getWamCpf());
+    // jCbSexo.setText(wamCliente.getWamSexo()); // Descomente se tiver esse campo
+    jTxtBairro.setText(wamCliente.getWamBairro());
+    jTxtTelefone.setText(wamCliente.getWamTelefone());
+    jTxtCelular.setText(wamCliente.getWamCelular());
+    jTextEmail.setText(wamCliente.getWamEmail());
+    jTxtEmpresa.setText(wamCliente.getWamEmpresa());
+    jTxtEstado.setText(wamCliente.getWamEstado());
+    jTxtCidade.setText(wamCliente.getWamCidade());
+    jTxtCep.setText(wamCliente.getWamCep());
+    
+    
+    jCheckBox1.setSelected(wamCliente.getWamAtivo().equals("S"));
+    if (wamCliente.getWamAtivo().equals("S") == true) {
+        jCheckBox1.setSelected(true);
+    } else {
+        jCheckBox1.setSelected(false);
+    }
+      
+   
     }
 
     /**
@@ -197,7 +253,7 @@ public class JDlgClientes extends javax.swing.JDialog {
                             .addComponent(jTxtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(jFCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jFCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -243,7 +299,7 @@ public class JDlgClientes extends javax.swing.JDialog {
                     .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

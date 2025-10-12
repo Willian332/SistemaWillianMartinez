@@ -71,15 +71,39 @@ public class Util {
     public static String DoubleParaStr(double num){
         return String.valueOf(num);
     }
-    public static Date strToDate (String cad){
-         try {
-            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
-            return formatoData.parse(cad);
-        } catch (ParseException ex) {
-           Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+    public static Date strParaDate (String cad){
+      
+     if (cad == null) {
+            System.out.println("⚠️ Campo de data nulo");
+            return null;
         }
-    return null;
+
+        cad = cad.trim();
+
+        if (cad.isEmpty() || cad.equals("__/__/____")) {
+            System.out.println("⚠️ Campo de data vazio");
+            return null;
         }
+
+        Date data = null;
+        String[] formatos = { "dd/MM/yyyy", "yyyy-MM-dd" };
+
+        for (String formato : formatos) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat(formato);
+                sdf.setLenient(false); // impede datas inválidas
+                data = sdf.parse(cad);
+                System.out.println("✅ Data convertida com sucesso: " + data);
+                return data;
+            } catch (ParseException e) {
+                // tenta o próximo formato
+            }
+        }
+
+        System.out.println("❌ Erro ao converter data: " + cad);
+        return null;
+    }
+    
     public static String dataParaString(Date cad) {//cad =data
         if(cad == null) return "";
         SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");

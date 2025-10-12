@@ -4,6 +4,7 @@
  */
 package view;
 
+import bean.WamProduto;
 import tools.Util;
 
 /**
@@ -25,6 +26,29 @@ public class JDlgProdutos extends javax.swing.JDialog {
                 jTxtEditora, jBtnConfirmar, jBtnCancelar);
     }
 
+    
+         public WamProduto viewBean() {
+        WamProduto wamProduto = new WamProduto();
+        wamProduto.setIdProduto(Util.strParaInt(jTxtCodigo.getText() ));
+        int codigo = Util.strParaInt(jTxtCodigo.getText());
+        wamProduto.setIdProduto(codigo);
+        wamProduto.setWamNome(jTxtNome.getText());
+        wamProduto.setWamValor(Util.strParaDouble(jTxtValor.getText()));
+        wamProduto.setWamAutor(jTxtNome.getText());
+        wamProduto.setWamDescricao(jTxtDescricao.getText());
+        wamProduto.setWamEditora(jTxtEditora.getText());
+     
+        return wamProduto;
+    }
+    
+    public void beanView(WamProduto wamProduto) {
+        jTxtCodigo.setText(Util.intParaString(wamProduto.getIdProduto()));
+        jTxtNome.setText(wamProduto.getWamNome());
+        jTxtValor.setText(String.valueOf(wamProduto.getWamValor()));
+        jTxtAutor.setText(wamProduto.getWamAutor());
+        jTxtEditora.setText(wamProduto.getWamEditora());
+   
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -41,10 +41,10 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="db_willian_martinez"/>
-  <table-filter match-name="wam_Venda_Produto"/>
+  <table-filter match-name="wam_cliente"/>
+  <table-filter match-name="wam_produto"/>
   <table-filter match-name="wam_usuario"/>
-  <table-filter match-name="wam_Cliente"/>
-  <table-filter match-name="wam_vendedor"/>
-  <table-filter match-name="wam_Produto"/>
   <table-filter match-name="wam_venda"/>
+  <table-filter match-name="wam_vendedor"/>
+  <table-filter match-name="wam_venda_produto"/>
 </hibernate-reverse-engineering>

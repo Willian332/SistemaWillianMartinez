@@ -5,6 +5,7 @@
 package view;
 
 import bean.WamUsuario;
+import dao.UsuariosDAO;
 import tools.Util;
 import javax.swing.JOptionPane;
 import tools.Util;
@@ -16,6 +17,7 @@ import tools.Util;
 public class JDlgUsuarios extends javax.swing.JDialog {
 
     private boolean procurar = false;
+     private boolean incluir;
     /**
      * Creates new form JDlgUsuarios
      */
@@ -26,7 +28,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido,
                 jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha,
-                jCBxNivel, jBtnConfirmar, jBtnCancelar);
+                jCBxNivel, jBtnConfirmar, jBtnCancelar, jCheckBoxAtivo);
   
 
     }
@@ -35,19 +37,19 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         WamUsuario wamUsuario = new WamUsuario();
         wamUsuario.setWamIdUsuario(Util.strParaInt(jTxtCodigo.getText() ));
         int codigo = Util.strParaInt(jTxtCodigo.getText());
-        //wamUsuario.setW(codigo);
+        wamUsuario.setWamIdUsuario(codigo);
         wamUsuario.setWamNome(jTxtNome.getText());
         wamUsuario.setWamApelido(jTxtApelido.getText());
         wamUsuario.setWamCpf(jFormattedTextFieldCPF.getText());
-        wamUsuario.setWamDataNascimento(Util.strToDate(jFormattedTextFieldData.getText()));
-        //wamUsuario.setWam(jPwfSenha.getText());
+        wamUsuario.setWamDataNascimento(Util.strParaDate(jFormattedTextFieldData.getText()));
+        wamUsuario.setWamSenha(jPwfSenha.getText());
         wamUsuario.setWamNivel(jCBxNivel.getSelectedIndex());
         if (jCheckBoxAtivo.isSelected() == true) {
             wamUsuario.setWamAtivo("S");
         } else {
             wamUsuario.setWamAtivo("N");
         }
-        return null;
+        return wamUsuario;
     }
     
     public void beanView(WamUsuario wamUsuario) {
@@ -58,6 +60,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         jFormattedTextFieldData.setText(Util.dataParaString(wamUsuario.getWamDataNascimento()));
         jPwfSenha.setText(wamUsuario.getWamSenha());
         jCBxNivel.setSelectedIndex(wamUsuario.getWamNivel());
+        jPwfSenha.setText(wamUsuario.getWamSenha());
         jCheckBoxAtivo.setSelected(wamUsuario.getWamAtivo().equals("S"));
         if (wamUsuario.getWamAtivo().equals("S") == true) {
             jCheckBoxAtivo.setSelected(true);
@@ -109,7 +112,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
         jLabel5.setText("Data de nascimento");
 
-        jFormattedTextFieldData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("##/##/####"))));
+        jFormattedTextFieldData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat(""))));
 
         jLabel6.setText("Nivel");
 
@@ -292,6 +295,15 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+         UsuariosDAO usuariosDAO = new UsuariosDAO();
+        if(incluir == true){
+            // vaiavel para saber qual botão cliqeui no boatao incluir ou confirmar
+        usuariosDAO.insert(viewBean());
+        }else{
+          usuariosDAO.update(viewBean());
+        }
+        
+        
          Util.habilitar(true , jTxtNome, jTxtApelido, jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha, jCheckBoxAtivo, jCBxNivel, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed

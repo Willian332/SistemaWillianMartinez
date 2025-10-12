@@ -1,5 +1,5 @@
 package bean;
-// Generated 10/10/2025 15:04:07 by Hibernate Tools 4.3.1
+// Generated 11/10/2025 18:12:54 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -36,7 +36,7 @@ public class WamVenda  implements java.io.Serializable {
      private BigDecimal wamDesconto;
      private BigDecimal wamValorFinal;
      private Date dataVenda;
-     private Set wamVendaProdutos = new HashSet(0);
+     
 
     public WamVenda() {
     }
@@ -57,7 +57,7 @@ public class WamVenda  implements java.io.Serializable {
        this.wamDesconto = wamDesconto;
        this.wamValorFinal = wamValorFinal;
        this.dataVenda = dataVenda;
-       this.wamVendaProdutos = wamVendaProdutos;
+      
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -132,14 +132,7 @@ public class WamVenda  implements java.io.Serializable {
         this.dataVenda = dataVenda;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="wamVenda")
-    public Set getWamVendaProdutos() {
-        return this.wamVendaProdutos;
-    }
-    
-    public void setWamVendaProdutos(Set wamVendaProdutos) {
-        this.wamVendaProdutos = wamVendaProdutos;
-    }
+
 
 
 
