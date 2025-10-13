@@ -6,8 +6,13 @@ package view;
 
 import bean.WamUsuario;
 import dao.UsuariosDAO;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tools.Util;
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import tools.Util;
 
 /**
@@ -16,8 +21,9 @@ import tools.Util;
  */
 public class JDlgUsuarios extends javax.swing.JDialog {
 
-    private boolean procurar = false;
+    //private boolean procurar = false;
      private boolean incluir;
+     private MaskFormatter mascaraCpf, mascaraDataNasc;
     /**
      * Creates new form JDlgUsuarios
      */
@@ -30,14 +36,22 @@ public class JDlgUsuarios extends javax.swing.JDialog {
                 jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha,
                 jCBxNivel, jBtnConfirmar, jBtnCancelar, jCheckBoxAtivo);
   
-
+        try {
+        mascaraCpf = new MaskFormatter("###.###.###-##");
+        mascaraDataNasc = new MaskFormatter("##/##/####");
+        jFormattedTextFieldCPF.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
+        jFormattedTextFieldData.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
+    } catch (ParseException ex) {
+        Logger.getLogger(JDlgUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
     
     public WamUsuario viewBean() {
         WamUsuario wamUsuario = new WamUsuario();
-        wamUsuario.setWamIdUsuario(Util.strParaInt(jTxtCodigo.getText() ));
-        int codigo = Util.strParaInt(jTxtCodigo.getText());
-        wamUsuario.setWamIdUsuario(codigo);
+       
+        //int codigo = Util.strParaInt(jTxtCodigo.getText());
+        //wamUsuario.setWamIdUsuario(codigo);
+        // gera automatcio
         wamUsuario.setWamNome(jTxtNome.getText());
         wamUsuario.setWamApelido(jTxtApelido.getText());
         wamUsuario.setWamCpf(jFormattedTextFieldCPF.getText());
@@ -279,17 +293,29 @@ public class JDlgUsuarios extends javax.swing.JDialog {
          Util.habilitar(true , jTxtCodigo, jTxtNome, jTxtApelido, jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha, jCheckBoxAtivo, jCBxNivel, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido);
+        
+        incluir = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
          Util.habilitar(true , jTxtNome, jTxtApelido, jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha, jCheckBoxAtivo, jCBxNivel, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        
+        incluir = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-         Util.perguntar("Deseja exluir seu usuario?");
+         if (Util.perguntar("Deseja Excluir?") == true) {
+            UsuariosDAO usuariosDAO = new UsuariosDAO();
+            usuariosDAO.delete(viewBean());
+
+        }
+         
+         Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido,
+                jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha,
+                jCBxNivel, jCheckBoxAtivo);
          
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
@@ -312,9 +338,13 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         // TODO add your handling code here:
        
         // Util.mensagem("Se não colocou nada (instanciou)");
-            procurar = true;
-            JDlgUsuariosPesquisar jDlgUsuariosPesquisar  = new JDlgUsuariosPesquisar(null, true);
-            jDlgUsuariosPesquisar.setVisible(true);
+//            procurar = true;
+//            JDlgUsuariosPesquisar jDlgUsuariosPesquisar  = new JDlgUsuariosPesquisar(null, true);
+//            jDlgUsuariosPesquisar.setVisible(true);
+
+        JDlgUsuariosPesquisar jDlgUsuariosPesquisar = new JDlgUsuariosPesquisar(null, true);     
+        jDlgUsuariosPesquisar.setTelaPai(this);
+        jDlgUsuariosPesquisar.setVisible(true);
 
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 

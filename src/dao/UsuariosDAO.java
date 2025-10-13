@@ -26,8 +26,8 @@ public class UsuariosDAO extends DaoAbstract{
     @Override
     public void update(Object object) {
         session.beginTransaction();
-        session.flush();
-        session.clear();
+         session.flush();
+         session.clear();
         session.update(object);
         session.getTransaction().commit();
     }
@@ -45,7 +45,7 @@ public class UsuariosDAO extends DaoAbstract{
     public Object list(int id) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(WamUsuario.class);
-        criteria.add(Restrictions.eq("wam_idUsuarios", id) );
+        criteria.add(Restrictions.eq("wam_idUsuario", id) );
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;

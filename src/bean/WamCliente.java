@@ -103,7 +103,7 @@ public class WamCliente  implements java.io.Serializable {
         this.wamRg = wamRg;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
+    
     @Column(name="wam_cpf", unique=true, nullable=false, length=19)
     public String getWamCpf() {
         return this.wamCpf;

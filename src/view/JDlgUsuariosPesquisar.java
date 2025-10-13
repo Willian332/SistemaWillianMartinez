@@ -4,6 +4,10 @@
  */
 package view;
 
+import dao.UsuariosDAO;
+import java.util.List;
+import bean.WamUsuario;
+
 /**
  *
  * @author user
@@ -13,9 +17,25 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgUsuariosPesquisar
      */
+    
+     private JDlgUsuarios jDlgUsuarios;
+    ControllerUsuarios controllerUsuarios;
+    
     public JDlgUsuariosPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Pesquisar Usuários");
+        controllerUsuarios = new ControllerUsuarios();
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        List lista = (List) usuariosDAO.listAll();
+        controllerUsuarios.setList(lista);
+        jTable1.setModel(controllerUsuarios);
+    }
+    
+    
+      public void setTelaPai( JDlgUsuarios jDlgUsuarios) {;
+        this.jDlgUsuarios = jDlgUsuarios;
     }
 
     /**
@@ -81,7 +101,10 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        
+        WamUsuario wamUsuario = (WamUsuario) controllerUsuarios.getBean(jTable1.getSelectedRow());
+        jDlgUsuarios.beanView(wamUsuario);
+        this.setVisible(false);
     }//GEN-LAST:event_jBtnOKActionPerformed
 
     /**

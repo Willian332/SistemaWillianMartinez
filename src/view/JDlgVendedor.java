@@ -4,6 +4,7 @@
  */
 package view;
 
+import bean.WamVendedor;
 import tools.Util;
 
 /**
@@ -22,9 +23,35 @@ public class JDlgVendedor extends javax.swing.JDialog {
         setTitle("Cadastro de Usuários");
         setLocationRelativeTo(null);
         Util.habilitar(false, jTxtCodigo, jTxtNome, jFcCpf,
-                jFormattedTextComissao, jTxtTelefone, jTxtNumero, jFormattedTextField1,
+                jTxtCommisao, jTxtTelefone, jTxtNumero, jFormattedTextField1,
                  jBtnConfirmar, jBtnCancelar);
     }
+    
+    public WamVendedor viewBean() {
+        WamVendedor wamVendedor = new WamVendedor();
+        wamVendedor.setWamIdVendedor(Util.strParaInt(jTxtCodigo.getText() ));
+        int codigo = Util.strParaInt(jTxtCodigo.getText());
+        wamVendedor.setWamIdVendedor(codigo);
+        wamVendedor.setWamNome(jTxtNome.getText());
+        wamVendedor.setWamCpf(jFcCpf.getText());
+        wamVendedor.setWamTelefone(jTxtTelefone.getText());
+        wamVendedor.setWamComissao(Util.strParaDouble(jTxtCommisao.getText()));
+        
+        wamVendedor.setWamDataNascimento(Util.strParaDate(jFormattedTextField1.getText()));
+      
+        return wamVendedor;
+    }
+    
+    public void beanView(WamVendedor wamVendedor) {
+        
+    jTxtCodigo.setText(Util.intParaString(wamVendedor.getWamIdVendedor()));
+    jTxtNome.setText(wamVendedor.getWamNome());
+    jFcCpf.setText(wamVendedor.getWamCpf());
+    jTxtTelefone.setText(wamVendedor.getWamTelefone());
+    jTxtCommisao.setText(String.valueOf(wamVendedor.getWamComissao()));
+    jFormattedTextField1.setText(Util.dataParaString(wamVendedor.getWamDataNascimento()));
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,9 +79,9 @@ public class JDlgVendedor extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jTxtTelefone = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextComissao = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         jTxtNumero = new javax.swing.JTextField();
+        jTxtCommisao = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -165,14 +192,16 @@ public class JDlgVendedor extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jBtnExcluir)
-                                    .addComponent(jFormattedTextComissao, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBtnCancelar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBtnAltera)
                                 .addGap(18, 18, 18)
-                                .addComponent(jBtnPesquisar)))
+                                .addComponent(jBtnPesquisar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jTxtCommisao, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(262, 262, 262))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,10 +219,11 @@ public class JDlgVendedor extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,9 +244,9 @@ public class JDlgVendedor extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jFcCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jFormattedTextComissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTxtCommisao, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnIncluir)
                     .addComponent(jBtnConfirmar)
@@ -236,14 +266,14 @@ public class JDlgVendedor extends javax.swing.JDialog {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true , jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jFormattedTextComissao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true , jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jTxtCommisao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false , jBtnIncluir, jBtnAltera, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jFormattedTextField1, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlteraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlteraActionPerformed
         // TODO add your handling code here:
-         Util.habilitar(true , jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jFormattedTextComissao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
+         Util.habilitar(true , jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jTxtCommisao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false , jBtnIncluir, jBtnAltera, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnAlteraActionPerformed
 
@@ -254,7 +284,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-         Util.habilitar(false , jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jFormattedTextComissao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
+         Util.habilitar(false , jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jTxtCommisao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAltera, jBtnExcluir, jBtnPesquisar);
          Util.limpar(jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jFormattedTextField1, jTxtNumero, jTxtTelefone);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
@@ -268,7 +298,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-         Util.habilitar(true , jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jFormattedTextComissao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
+         Util.habilitar(true , jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jTxtCommisao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false , jBtnIncluir, jBtnAltera, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
@@ -322,7 +352,6 @@ public class JDlgVendedor extends javax.swing.JDialog {
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnPesquisar;
     private javax.swing.JFormattedTextField jFcCpf;
-    private javax.swing.JFormattedTextField jFormattedTextComissao;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -332,6 +361,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTxtCodigo;
+    private javax.swing.JTextField jTxtCommisao;
     private javax.swing.JTextField jTxtNome;
     private javax.swing.JTextField jTxtNumero;
     private javax.swing.JTextField jTxtTelefone;
