@@ -73,41 +73,57 @@ public class Util {
     }
     public static Date strParaDate (String cad){
       
-     if (cad == null) {
-            System.out.println("⚠️ Campo de data nulo");
-            return null;
-        }
-
-        cad = cad.trim();
-
-        if (cad.isEmpty() || cad.equals("__/__/____")) {
-            System.out.println("⚠️ Campo de data vazio");
-            return null;
-        }
-
-        Date data = null;
-        String[] formatos = { "dd/MM/yyyy", "yyyy-MM-dd" };
-
-        for (String formato : formatos) {
             try {
-                SimpleDateFormat sdf = new SimpleDateFormat(formato);
-                sdf.setLenient(false); // impede datas inválidas
-                data = sdf.parse(cad);
-                System.out.println("✅ Data convertida com sucesso: " + data);
-                return data;
-            } catch (ParseException e) {
-                // tenta o próximo formato
+                SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+                    return formatoData.parse(cad);
+                } catch (ParseException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+            return null;
 
-        System.out.println("❌ Erro ao converter data: " + cad);
-        return null;
     }
     
     public static String dataParaString(Date cad) {//cad =data
-        if(cad == null) return "";
+         if(cad == null) return "";
         SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
-        return formatoData.format(formatoData);
+        return formatoData.format(cad); 
         
     }
+    
+    public static boolean validEmail(String email) {
+          // Verifica se email é null ou vazio
+    if (email == null || email.trim().isEmpty()) {
+        return false; // Email inválido
+    }
+    //Regex  para validar formato
+                        // nome com letras e numeros   .com ,br . org
+    String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+    //Verifica se email corresponde regex
+    return email.matches(regex);
+        
+    }
+    
+    public static boolean validarEmailComAlerta(String email, java.awt.Component parent) {
+    // 1. Verifica se está vazio
+    if (email == null || email.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(parent, "Email não pode estar vazio!", "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+        return false; // Para execução e mostra alerta
+    }
+    
+    // 2. Verifica formato usando o primeiro método
+    if (!validEmail(email)) {
+        JOptionPane.showMessageDialog(parent, 
+            "📧 Email inválido!\n\n" +
+            "Formato correto: usuario@exemplo.com\n" +
+            "• Deve conter @\n" +
+            "• Deve ter domínio (ex: .com, .com.br)\n" +
+            "• Não pode ter espaços", 
+            "Email Inválido", 
+            JOptionPane.ERROR_MESSAGE);
+        return false; // Para execução e mostra alerta detalhado
+    }
+    
+    // 3. Se passou em todas as validações
+    return true; // Email válido
+}
 }

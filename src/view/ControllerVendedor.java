@@ -4,8 +4,7 @@
  */
 package view;
 
-import bean.WamCliente;
-
+import bean.WamVendedor;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -13,7 +12,7 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author marcos
  */
-public class ControllerClientes extends AbstractTableModel {
+public class ControllerVendedor extends AbstractTableModel {
 
     List lista;
 
@@ -22,7 +21,7 @@ public class ControllerClientes extends AbstractTableModel {
     }
 
     public Object getBean(int rowIndex) {
-       return lista.get(rowIndex); // vai pegar cada ben   
+       return lista.get(rowIndex);    
     }
     
     @Override
@@ -37,19 +36,24 @@ public class ControllerClientes extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        WamCliente clientes = (WamCliente) lista.get(rowIndex);
+        WamVendedor vendedor = (WamVendedor) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return clientes.getIdCliente();
+            return vendedor.getWamIdVendedor();
         }
         if (columnIndex == 1) {
-            return clientes.getWamNome();
+            return vendedor.getWamNome();
         }
         if (columnIndex == 2) {
-            return clientes.getWamCpf();
+            return vendedor.getWamCpf();
         }
         if (columnIndex == 3) {
-            return clientes.getWamDataNascimento();
+            return vendedor.getWamNumero();
         }
+        
+        if (columnIndex == 4) {
+            return vendedor.getWamComissao();
+        }
+        
         return "";
     }
 
@@ -65,7 +69,11 @@ public class ControllerClientes extends AbstractTableModel {
             return "Cpf";
         }
         if (column == 3) {
-            return "Data Nascimento";
+            return "Numero";
+        }
+        
+        if (column == 4) {
+            return "Comissão";
         }
         return "";
     }

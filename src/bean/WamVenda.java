@@ -2,7 +2,7 @@ package bean;
 // Generated 11/10/2025 18:12:54 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
+import java.lang.Double;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -32,31 +32,31 @@ public class WamVenda  implements java.io.Serializable {
      private Integer idVenda;
      private WamCliente wamCliente;
      private WamVendedor wamVendedor;
-     private BigDecimal wamValor;
-     private BigDecimal wamDesconto;
-     private BigDecimal wamValorFinal;
-     private Date dataVenda;
+     private Double wamValor;
+     private Double wamDesconto;
+     private Double wamValorFinal;
+     private Date wamDataVenda;
      
 
     public WamVenda() {
     }
 
 	
-    public WamVenda(WamCliente wamCliente, WamVendedor wamVendedor, BigDecimal wamValor, BigDecimal wamDesconto, BigDecimal wamValorFinal, Date dataVenda) {
+    public WamVenda(WamCliente wamCliente, WamVendedor wamVendedor, Double wamValor, Double wamDesconto, Double wamValorFinal, Date dataVenda) {
         this.wamCliente = wamCliente;
         this.wamVendedor = wamVendedor;
         this.wamValor = wamValor;
         this.wamDesconto = wamDesconto;
         this.wamValorFinal = wamValorFinal;
-        this.dataVenda = dataVenda;
+        this.wamDataVenda = dataVenda;
     }
-    public WamVenda(WamCliente wamCliente, WamVendedor wamVendedor, BigDecimal wamValor, BigDecimal wamDesconto, BigDecimal wamValorFinal, Date dataVenda, Set wamVendaProdutos) {
+    public WamVenda(WamCliente wamCliente, WamVendedor wamVendedor, Double wamValor, Double wamDesconto, Double wamValorFinal, Date wamDataVenda, Set wamVendaProdutos) {
        this.wamCliente = wamCliente;
        this.wamVendedor = wamVendedor;
        this.wamValor = wamValor;
        this.wamDesconto = wamDesconto;
        this.wamValorFinal = wamValorFinal;
-       this.dataVenda = dataVenda;
+       this.wamDataVenda = wamDataVenda;
       
     }
    
@@ -94,42 +94,42 @@ public class WamVenda  implements java.io.Serializable {
 
     
     @Column(name="wam_valor", nullable=false, precision=4)
-    public BigDecimal getWamValor() {
+    public Double getWamValor() {
         return this.wamValor;
     }
     
-    public void setWamValor(BigDecimal wamValor) {
+    public void setWamValor(Double wamValor) {
         this.wamValor = wamValor;
     }
 
     
     @Column(name="wam_desconto", nullable=false, precision=4)
-    public BigDecimal getWamDesconto() {
+    public Double getWamDesconto() {
         return this.wamDesconto;
     }
     
-    public void setWamDesconto(BigDecimal wamDesconto) {
+    public void setWamDesconto(Double wamDesconto) {
         this.wamDesconto = wamDesconto;
     }
 
     
     @Column(name="wam_valorFinal", nullable=false, precision=4)
-    public BigDecimal getWamValorFinal() {
+    public Double getWamValorFinal() {
         return this.wamValorFinal;
     }
     
-    public void setWamValorFinal(BigDecimal wamValorFinal) {
+    public void setWamValorFinal(Double wamValorFinal) {
         this.wamValorFinal = wamValorFinal;
     }
 
     @Temporal(TemporalType.DATE)
     @Column(name="dataVenda", nullable=false, length=10)
     public Date getDataVenda() {
-        return this.dataVenda;
+        return this.wamDataVenda;
     }
     
     public void setDataVenda(Date dataVenda) {
-        this.dataVenda = dataVenda;
+        this.wamDataVenda = dataVenda;
     }
 
 

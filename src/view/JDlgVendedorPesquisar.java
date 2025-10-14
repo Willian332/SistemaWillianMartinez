@@ -4,6 +4,11 @@
  */
 package view;
 
+import dao.VendadeorDAO;
+import java.util.List;
+import  bean.WamVendedor;
+
+
 /**
  *
  * @author user
@@ -13,9 +18,21 @@ public class JDlgVendedorPesquisar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgVendedorPesquisar
      */
+    
+      private JDlgVendedor jDlgVendedor;
+    ControllerVendedor controllerVendedor;
+    
+    
     public JDlgVendedorPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Pesquisar Usuários");
+        controllerVendedor = new ControllerVendedor();
+        VendadeorDAO vendadeorDAO = new VendadeorDAO();
+        List lista = (List) vendadeorDAO.listAll();
+        controllerVendedor.setList(lista);
+        jTable1.setModel(controllerVendedor);
     }
 
     /**

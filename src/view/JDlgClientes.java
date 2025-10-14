@@ -6,6 +6,8 @@ package view;
 
 import bean.WamCliente;
 import tools.Util;
+import dao.ClientesDAO;
+
 
 /**
  *
@@ -13,6 +15,7 @@ import tools.Util;
  */
 public class JDlgClientes extends javax.swing.JDialog {
       private boolean procurar = false;
+       private boolean incluir;
     /**
      * Creates new form JDlgClientes
      */
@@ -30,17 +33,25 @@ public class JDlgClientes extends javax.swing.JDialog {
         WamCliente wamCliente = new WamCliente();
         wamCliente.setIdCliente(Util.strParaInt(jTxtCodigo.getText() ));
         int codigo = Util.strParaInt(jTxtCodigo.getText());
-    wamCliente.setIdCliente(codigo);
-    wamCliente.setWamNome(jTxtNome.getText());
-    wamCliente.setWamDataNascimento(Util.strParaDate(jFormattedTextDta.getText())); // CORRIGIDO
-    wamCliente.setWamRg(jTxtRg.getText());
-    wamCliente.setWamCpf(jFCpf.getText());
-    wamCliente.setWamSexo((String) jCbSexo.getSelectedItem());
-    wamCliente.setWamBairro(jTxtBairro.getText());
-    wamCliente.setWamTelefone(jTxtTelefone.getText());
-    wamCliente.setWamCelular(jTxtCelular.getText());
-    wamCliente.setWamEmail(jTextEmail.getText());
-    wamCliente.setWamEmpresa(jTxtEmpresa.getText());
+        wamCliente.setIdCliente(codigo);
+        wamCliente.setWamNome(jTxtNome.getText());
+        wamCliente.setWamDataNascimento(Util.strParaDate(jFormattedTextDta.getText())); 
+        wamCliente.setWamRg(jTxtRg.getText());
+        wamCliente.setWamCpf(jFCpf.getText());
+        wamCliente.setWamSexo((String) jCbSexo.getSelectedItem());
+        wamCliente.setWamBairro(jTxtBairro.getText());
+        wamCliente.setWamTelefone(jTxtTelefone.getText());
+        wamCliente.setWamCelular(jTxtCelular.getText());
+       //não esta retornando booleano wamCliente.setWamEmail(Util.validEmail(jTextEmail.getText()));
+       String email = jTextEmail.getText().trim();
+
+        if (!Util.validarEmailComAlerta(email, this)) {
+        jTextEmail.requestFocus(); // Foca no campo com erro
+        return null; // Impede salvar dados inválidos
+            }
+
+        wamCliente.setWamEmail(jTextEmail.getText());
+        wamCliente.setWamEmpresa(jTxtEmpresa.getText());
         
         if (jCheckBox1.isSelected() == true) {
             wamCliente.setWamAtivo("S");
@@ -189,7 +200,7 @@ public class JDlgClientes extends javax.swing.JDialog {
 
         jLabel5.setText("Sexo");
 
-        jCbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Maculino", "Feminino" }));
+        jCbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
 
         jLabel6.setText("Data de nascimento");
 
@@ -212,6 +223,18 @@ public class JDlgClientes extends javax.swing.JDialog {
         jLabel15.setText("Empresa");
 
         jLabel16.setText("CEP");
+
+        try {
+            jFCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            jFormattedTextDta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -251,9 +274,9 @@ public class JDlgClientes extends javax.swing.JDialog {
                             .addComponent(jLabel5)
                             .addComponent(jCbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTxtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(jFCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jFCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -356,7 +379,7 @@ public class JDlgClientes extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTxtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTxtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnAlterar)
                     .addComponent(jBtnCancelar)
@@ -385,6 +408,8 @@ public class JDlgClientes extends javax.swing.JDialog {
          Util.limpar(jTxtCodigo, jTxtCelular, jTxtCep, jTextEmail, jTxtCep, jTxtCidade, jTxtNome,
                 jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa, jTxtEstado);
           Util.habilitar(false , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+          
+          incluir = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
@@ -392,6 +417,8 @@ public class JDlgClientes extends javax.swing.JDialog {
          Util.habilitar(true, jTxtCelular, jTextEmail, jTxtCep, jTxtCidade, jTxtNome,
                 jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa,jFormattedTextDta,jFCpf, jTxtEstado, jBtnConfirmar, jBtnCancelar);
          Util.habilitar(false , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+         
+         incluir = false;
            
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
@@ -406,6 +433,15 @@ public class JDlgClientes extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+        
+        
+         ClientesDAO clientesDAO = new ClientesDAO();
+        if(incluir == true){
+            // vaiavel para saber qual botão cliqeui no boatao incluir ou confirmar
+      clientesDAO.insert(viewBean());
+        }else{
+      clientesDAO.update(viewBean());
+        }
          Util.habilitar(false,jTxtCodigo, jTxtCelular, jTxtCep, jTextEmail, jTxtCep, jTxtCidade, jTxtNome,
                 jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa,jFCpf , jFormattedTextDta,jTxtEstado, jBtnConfirmar, jBtnCancelar);
          Util.habilitar(true , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
