@@ -117,14 +117,16 @@
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextCodigoVEnda" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextValor" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextDesconto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTxtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCboVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jFrmtData" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jCboCliente" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jTextCodigoVEnda" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextValor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextDesconto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTxtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCboVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jFrmtData" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">

@@ -283,17 +283,27 @@ public class JDlgVendedor extends javax.swing.JDialog {
         Util.habilitar(true , jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jTxtCommisao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false , jBtnIncluir, jBtnAltera, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jFormattedTextField1, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
+        
+        incluir = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlteraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlteraActionPerformed
         // TODO add your handling code here:
          Util.habilitar(true , jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jTxtCommisao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false , jBtnIncluir, jBtnAltera, jBtnExcluir, jBtnPesquisar);
+        
+        incluir = false;
+                
     }//GEN-LAST:event_jBtnAlteraActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        Util.perguntar("Deseja exlcluir isso?");
+        if (Util.perguntar("Deseja Excluir?") == true) {
+            VendadeorDAO vendadeorDAO = new VendadeorDAO();
+            vendadeorDAO.delete(viewBean());
+
+        }
+        Util.limpar(jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jFormattedTextField1,jTxtCommisao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
@@ -305,9 +315,9 @@ public class JDlgVendedor extends javax.swing.JDialog {
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
-         procurar = true;
-            JDlgVendedorPesquisar jDlgVendedorPesquisar  = new JDlgVendedorPesquisar(null, true);
-            jDlgVendedorPesquisar.setVisible(true);
+         JDlgVendedorPesquisar jDlgVendedorPesquisar = new JDlgVendedorPesquisar(null, true);     
+        jDlgVendedorPesquisar.setTelaPai(this);
+        jDlgVendedorPesquisar.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed

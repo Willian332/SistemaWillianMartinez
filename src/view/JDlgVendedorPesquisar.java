@@ -34,6 +34,10 @@ public class JDlgVendedorPesquisar extends javax.swing.JDialog {
         controllerVendedor.setList(lista);
         jTable1.setModel(controllerVendedor);
     }
+    
+    public void setTelaPai( JDlgVendedor jDlgVendedor) {;
+        this.jDlgVendedor = jDlgVendedor;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,7 +98,12 @@ public class JDlgVendedorPesquisar extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
+        
+        int linsel = jTable1.getSelectedRow();
+        WamVendedor wamVendedor = (WamVendedor) controllerVendedor.getBean(jTable1.getSelectedRow());
+        jDlgVendedor.beanView(wamVendedor);
         setVisible(false);
+        
     }//GEN-LAST:event_jBtnOKActionPerformed
 
     /**
