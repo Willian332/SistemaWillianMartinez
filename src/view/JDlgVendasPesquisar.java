@@ -4,6 +4,10 @@
  */
 package view;
 
+import java.util.List;
+import bean.WamVenda;
+import dao.VendasDAO;
+
 /**
  *
  * @author user
@@ -13,10 +17,25 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgVendasPesquisar
      */
+    
+    private JDlgVendas jDlgVendas;
+    ControllerVendas controllerVendas;
     public JDlgVendasPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Pesquisar Vendas");
+        controllerVendas = new ControllerVendas();
+        VendasDAO vendasDAO = new VendasDAO();
+        List lista = (List) vendasDAO.listAll();
+        controllerVendas.setList(lista);
+        jTable1.setModel(controllerVendas);
     }
+    
+     public void setTelaPai( JDlgVendas jDlgVendas) {;
+        this.jDlgVendas = jDlgVendas;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +46,63 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        JbtnOK = new javax.swing.JToggleButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        JbtnOK.setText("OK");
+        JbtnOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnOKActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 66, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JbtnOK)
+                .addGap(96, 96, 96))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(JbtnOK)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JbtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnOKActionPerformed
+        // TODO add your handling code here:
+         int linsel = jTable1.getSelectedRow();
+        WamVenda wamVenda = (WamVenda) controllerVendas.getBean(jTable1.getSelectedRow());
+        jDlgVendas.beanView(wamVenda);
+        this.setVisible(false);
+    }//GEN-LAST:event_JbtnOKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,5 +147,8 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton JbtnOK;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

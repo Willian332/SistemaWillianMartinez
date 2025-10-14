@@ -2,9 +2,7 @@ package bean;
 // Generated 11/10/2025 18:12:54 by Hibernate Tools 4.3.1
 
 
-import java.lang.Double;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +12,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -123,7 +120,7 @@ public class WamVenda  implements java.io.Serializable {
     }
 
     @Temporal(TemporalType.DATE)
-    @Column(name="dataVenda", nullable=false, length=10)
+    @Column(name="wam_dataVenda", nullable=false, length=10)
     public Date getDataVenda() {
         return this.wamDataVenda;
     }

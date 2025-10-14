@@ -223,7 +223,10 @@ public class WamCliente  implements java.io.Serializable {
         this.wamCep = wamCep;
     }
 
-
+    @Override
+    public String toString() {
+        return this.getWamNome();
+    }
 
 
 

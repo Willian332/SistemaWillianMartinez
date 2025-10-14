@@ -136,7 +136,10 @@ public class WamVendedor  implements java.io.Serializable {
 //    public void setWamVendas(Set wamVendas) {
 //        this.wamVendas = wamVendas;
 //    }
-
+    @Override
+    public String toString() {
+        return this.getWamNome();  
+    }
 
 
 
