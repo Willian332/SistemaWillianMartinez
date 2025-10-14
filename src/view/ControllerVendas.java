@@ -10,4 +10,6 @@ package view;
  */
 public class ControllerVendas {
     
+    
+    
 }

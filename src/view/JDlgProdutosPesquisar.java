@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package view;
+import bean.WamProduto;
+import dao.ProdutosDAO;
+import java.util.List;
+import view.ControllerProdutos;
 
 /**
  *
@@ -13,9 +17,25 @@ public class JDlgProdutosPesquisar extends javax.swing.JDialog {
     /**
      * Creates new form JDlgProdutosPesquisar
      */
+    
+    private JDlgProdutos jDlgProdutos;
+    ControllerProdutos controllerProdutos;
+    
+    
     public JDlgProdutosPesquisar(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+      super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Pesquisar Produtos");
+        controllerProdutos = new ControllerProdutos();
+        ProdutosDAO produtosDAO = new ProdutosDAO();
+        List lista = (List) produtosDAO.listAll();
+        controllerProdutos.setList(lista);
+        jTable1.setModel(controllerProdutos);
+    }
+    
+    public void setTelaPai( JDlgProdutos jDlgProdutos) {;
+        this.jDlgProdutos = jDlgProdutos;
     }
 
     /**
@@ -81,7 +101,12 @@ public class JDlgProdutosPesquisar extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        
+        int linsel = jTable1.getSelectedRow();
+        WamProduto wamProduto = (WamProduto) controllerProdutos.getBean(jTable1.getSelectedRow());
+        jDlgProdutos.beanView(wamProduto);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**
