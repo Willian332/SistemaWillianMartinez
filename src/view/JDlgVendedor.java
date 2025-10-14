@@ -312,6 +312,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+
         VendadeorDAO vendadeorDAO = new VendadeorDAO();
         if(incluir == true){
             // vaiavel para saber qual botão cliqeui no boatao incluir ou confirmar
@@ -320,6 +321,8 @@ public class JDlgVendedor extends javax.swing.JDialog {
         vendadeorDAO.update(viewBean());
         }
         
+
+
          Util.habilitar(true , jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jTxtCommisao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false , jBtnIncluir, jBtnAltera, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed

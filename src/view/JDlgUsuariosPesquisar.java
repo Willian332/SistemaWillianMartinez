@@ -101,7 +101,11 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
+
         int linsel = jTable1.getSelectedRow();
+
+        
+
         WamUsuario wamUsuario = (WamUsuario) controllerUsuarios.getBean(jTable1.getSelectedRow());
         jDlgUsuarios.beanView(wamUsuario);
         this.setVisible(false);

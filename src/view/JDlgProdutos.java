@@ -46,7 +46,11 @@ public class JDlgProdutos extends javax.swing.JDialog {
     public void beanView(WamProduto wamProduto) {
         jTxtCodigo.setText(Util.intParaString(wamProduto.getIdProduto()));
         jTxtNome.setText(wamProduto.getWamNome());
+
        jTxtValor.setText(Util.DoubleParaStr(wamProduto.getWamValor()));
+
+       // jTxtValor.setText(Util.strParaDouble(wamProduto.getWamValor()));
+
         jTxtAutor.setText(wamProduto.getWamAutor());
         jTxtEditora.setText(wamProduto.getWamEditora());
    
