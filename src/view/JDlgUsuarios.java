@@ -34,7 +34,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido,
                 jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha,
-                jCBxNivel, jBtnConfirmar, jBtnCancelar, jCheckBoxAtivo);
+                jCBxNivel, jBtnConfirmar, jBtnCancelar, jCheckBoxAtivo, jBtnExcluir, jBtnAlterar);
   
         try {
         mascaraCpf = new MaskFormatter("###.###.###-##");
@@ -345,6 +345,9 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         JDlgUsuariosPesquisar jDlgUsuariosPesquisar = new JDlgUsuariosPesquisar(null, true);     
         jDlgUsuariosPesquisar.setTelaPai(this);
         jDlgUsuariosPesquisar.setVisible(true);
+        
+        
+       
 
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
@@ -352,8 +355,8 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         // TODO add your handling code here:
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido,
                 jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha,
-                jCBxNivel, jBtnConfirmar, jBtnCancelar);
-        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+                jCBxNivel, jBtnConfirmar, jBtnCancelar, jCheckBoxAtivo );
+        Util.habilitar(true, jBtnIncluir,jBtnExcluir, jBtnAlterar, jBtnPesquisar);
         Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido, jCBxNivel);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 

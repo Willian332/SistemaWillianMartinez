@@ -25,7 +25,9 @@ public class JDlgClientes extends javax.swing.JDialog {
         setTitle("Cadastro de Clientes");
         setLocationRelativeTo(null);
         Util.habilitar(false,jTxtCodigo, jTxtCelular, jTxtCep, jTextEmail, jTxtCep, jTxtCidade, jTxtNome,
-                jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa, jTxtEstado,jFormattedTextDta,jFCpf, jBtnConfirmar, jBtnCancelar);
+                jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa, jTxtEstado,jFormattedTextDta,
+                jFCpf, jBtnConfirmar, jBtnCancelar, 
+                jBtnAlterar, jBtnExcluir);
     }
     
     
@@ -42,12 +44,16 @@ public class JDlgClientes extends javax.swing.JDialog {
         wamCliente.setWamBairro(jTxtBairro.getText());
         wamCliente.setWamTelefone(jTxtTelefone.getText());
         wamCliente.setWamCelular(jTxtCelular.getText());
-       //não esta retornando booleano wamCliente.setWamEmail(Util.validEmail(jTextEmail.getText()));
+        
+        wamCliente.setWamCidade(jTxtCidade.getText());
+        wamCliente.setWamEstado(jTxtEstado.getText());
+        wamCliente.setWamCep(jTxtCep.getText());
+       
        String email = jTextEmail.getText().trim();
 
         if (!Util.validarEmailComAlerta(email, this)) {
-        jTextEmail.requestFocus(); // Foca no campo com erro
-        return null; // Impede salvar dados inválidos
+        jTextEmail.requestFocus();
+        return null; 
             }
 
         wamCliente.setWamEmail(jTextEmail.getText());
@@ -62,23 +68,24 @@ public class JDlgClientes extends javax.swing.JDialog {
         return wamCliente;
     }
     
-    public void beanView(WamCliente wamCliente) {
+    public void beanView (WamCliente wamCliente) {
         
         
-     jTxtCodigo.setText(Util.intParaString(wamCliente.getIdCliente()));
-    jTxtNome.setText(wamCliente.getWamNome());
-    jFormattedTextDta.setText(Util.dataParaString(wamCliente.getWamDataNascimento()));
-    jTxtRg.setText(wamCliente.getWamRg());
-    jFCpf.setText(wamCliente.getWamCpf());
-    // jCbSexo.setText(wamCliente.getWamSexo()); // Descomente se tiver esse campo
-    jTxtBairro.setText(wamCliente.getWamBairro());
-    jTxtTelefone.setText(wamCliente.getWamTelefone());
-    jTxtCelular.setText(wamCliente.getWamCelular());
-    jTextEmail.setText(wamCliente.getWamEmail());
-    jTxtEmpresa.setText(wamCliente.getWamEmpresa());
-    jTxtEstado.setText(wamCliente.getWamEstado());
-    jTxtCidade.setText(wamCliente.getWamCidade());
-    jTxtCep.setText(wamCliente.getWamCep());
+       jTxtCodigo.setText(Util.intParaString(wamCliente.getIdCliente()));
+       jTxtNome.setText(wamCliente.getWamNome());
+       jFormattedTextDta.setText(Util.dataParaString(wamCliente.getWamDataNascimento()));
+       jTxtRg.setText(wamCliente.getWamRg());
+       jFCpf.setText(wamCliente.getWamCpf());
+       jCbSexo.setSelectedItem(wamCliente.getWamSexo());
+       jTxtBairro.setText(wamCliente.getWamBairro());
+       jTxtTelefone.setText(wamCliente.getWamTelefone());
+       jTxtCelular.setText(wamCliente.getWamCelular());
+       jTextEmail.setText(wamCliente.getWamEmail());
+       jTxtEmpresa.setText(wamCliente.getWamEmpresa());
+       
+       jTxtEstado.setText(wamCliente.getWamEstado());
+       jTxtCidade.setText(wamCliente.getWamCidade());
+       jTxtCep.setText(wamCliente.getWamCep());
     
     
     jCheckBox1.setSelected(wamCliente.getWamAtivo().equals("S"));
@@ -395,10 +402,14 @@ public class JDlgClientes extends javax.swing.JDialog {
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
-            procurar = true;
-           
-            JDlgClientesPesquisar jDlgClientesPesquisar = new JDlgClientesPesquisar(null, true);
-            jDlgClientesPesquisar.setVisible(true);
+        
+        
+        JDlgClientesPesquisar jDlgClientesPesquisar = new JDlgClientesPesquisar(null, true);     
+        jDlgClientesPesquisar.setTelaPai(this);
+        jDlgClientesPesquisar.setVisible(true);
+        
+        Util.habilitar(false , jBtnIncluir,  jBtnPesquisar);
+        Util.habilitar(true , jBtnAlterar,  jBtnExcluir);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
@@ -406,7 +417,7 @@ public class JDlgClientes extends javax.swing.JDialog {
          Util.habilitar(true,jTxtCodigo, jTxtCelular, jTxtCep, jTextEmail, jTxtCep, jTxtCidade, jTxtNome,
                 jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa, jTxtEstado, jFCpf, jFormattedTextDta, jBtnConfirmar, jBtnCancelar);
          Util.limpar(jTxtCodigo, jTxtCelular, jTxtCep, jTextEmail, jTxtCep, jTxtCidade, jTxtNome,
-                jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa, jTxtEstado);
+                jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa, jTxtEstado, jFCpf, jFormattedTextDta);
           Util.habilitar(false , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
           
           incluir = true;
@@ -449,7 +460,17 @@ public class JDlgClientes extends javax.swing.JDialog {
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        Util.perguntar("Deseja excluir");
+        //Util.perguntar("Deseja excluir");
+        
+        if (Util.perguntar("Deseja Excluir?") == true) {
+            ClientesDAO clientesDAO = new ClientesDAO();
+            clientesDAO.delete(viewBean());
+
+        }
+        
+        
+         Util.limpar(jTxtCodigo, jTxtCelular, jTxtCep, jTextEmail, jTxtCidade, jTxtNome,
+                jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa, jTxtEstado, jBtnConfirmar, jBtnCancelar);
                 
                 
         

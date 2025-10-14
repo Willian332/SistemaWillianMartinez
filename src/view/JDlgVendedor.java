@@ -26,7 +26,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         Util.habilitar(false, jTxtCodigo, jTxtNome, jFcCpf,
                 jTxtCommisao, jTxtTelefone, jTxtNumero, jFormattedTextField1,
-                 jBtnConfirmar, jBtnCancelar);
+                 jBtnConfirmar, jBtnCancelar, jBtnExcluir, jBtnAltera);
     }
     
     public WamVendedor viewBean() {
@@ -318,6 +318,9 @@ public class JDlgVendedor extends javax.swing.JDialog {
          JDlgVendedorPesquisar jDlgVendedorPesquisar = new JDlgVendedorPesquisar(null, true);     
         jDlgVendedorPesquisar.setTelaPai(this);
         jDlgVendedorPesquisar.setVisible(true);
+        
+        Util.habilitar(false , jBtnIncluir,  jBtnPesquisar);
+        Util.habilitar(true , jBtnAltera,  jBtnExcluir);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed

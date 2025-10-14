@@ -25,7 +25,7 @@ import javax.swing.JTextField;
  */
 public class Util {
     
-    // Classe utilitária com métodos estáticos (você não precisa criar um objeto para usar).
+   
   public static void habilitar(boolean valor, JComponent ... componentes ){
         for (int i = 0; i < componentes.length; i++) {
             componentes[i].setEnabled(valor);
@@ -91,14 +91,13 @@ public class Util {
     }
     
     public static boolean validEmail(String email) {
-          // Verifica se email é null ou vazio
+         
     if (email == null || email.trim().isEmpty()) {
-        return false; // Email inválido
+        return false; 
     }
-    //Regex  para validar formato
-                        // nome com letras e numeros   .com ,br . org
+    
     String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-    //Verifica se email corresponde regex
+    
     return email.matches(regex);
         
     }
@@ -113,17 +112,17 @@ public class Util {
     // 2. Verifica formato usando o primeiro método
     if (!validEmail(email)) {
         JOptionPane.showMessageDialog(parent, 
-            "📧 Email inválido!\n\n" +
-            "Formato correto: usuario@exemplo.com\n" +
-            "• Deve conter @\n" +
-            "• Deve ter domínio (ex: .com, .com.br)\n" +
-            "• Não pode ter espaços", 
-            "Email Inválido", 
+            " MEEEUUU DEUS Email inválido ser Humano!\n\n" +
+            "Formato para o email é: usuario@exemplo.com\n" +
+            "Deve ter @ \n" +
+            "També(ex: .com, .com.br)\n" +
+            "Não pode ter espaços", 
+            "Email é Inválido", 
             JOptionPane.ERROR_MESSAGE);
         return false; // Para execução e mostra alerta detalhado
     }
     
-    // 3. Se passou em todas as validações
-    return true; // Email válido
+    // se está sero o email é valido
+    return true; 
 }
 }

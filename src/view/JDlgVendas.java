@@ -31,8 +31,8 @@ public class JDlgVendas extends javax.swing.JDialog {
     public JDlgVendas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         Util.habilitar(false, jTextCodigoVEnda,jFrmtData ,jCboCliente, jCboVendedor, jTextValor, jTextDesconto, jTxtTotal, jBtnConfirmar, 
-                 jBtnCancelar,jBtnIncluirProud, jBtnAlterarProud, jBtnExcluirProud);
+         Util.habilitar(false, jTextCodigoVEnda,jFrmtData ,jCboCliente, jCboVendedor, jTextValor, jTextDesconto, jTxtTotal, jBtnConfirmar, jBtnExcluir,
+                 jBtnCancelar,jBtnIncluirProud, jBtnAlterarProud, jBtnExcluirProud, jBtnAlterar);
         ClientesDAO clientesDAO = new ClientesDAO();
         List lista = (List) clientesDAO.listAll();
         for (int i = 0; i < lista.size(); i++){
@@ -367,7 +367,7 @@ public class JDlgVendas extends javax.swing.JDialog {
 
         }
        
-       Util.limpar(jTextCodigoVEnda, jCboCliente, jCboVendedor, jTextValor, jTextDesconto, jTxtTotal);
+       Util.limpar(jTextCodigoVEnda, jCboCliente, jCboVendedor,jFrmtData, jTextValor, jTextDesconto, jTxtTotal);
 
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
@@ -388,7 +388,7 @@ public class JDlgVendas extends javax.swing.JDialog {
             vendasDAO.update(viewBean());
         }
 
-       Util.habilitar(false, jTextCodigoVEnda, jCboCliente, jCboVendedor, jTextValor, jTextDesconto, jTxtTotal, jBtnConfirmar, jBtnCancelar);
+       Util.habilitar(false, jTextCodigoVEnda, jCboCliente, jCboVendedor, jTextValor, jTextDesconto, jTxtTotal,jFrmtData, jBtnConfirmar, jBtnCancelar);
        Util.habilitar(true , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
        Util.limpar(jTextCodigoVEnda, jCboCliente,jFrmtData ,jCboVendedor, jTextValor, jTextDesconto, jTxtTotal);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed

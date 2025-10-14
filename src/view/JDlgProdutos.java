@@ -25,7 +25,7 @@ public class JDlgProdutos extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtValor,
                 jTxtAutor, jTxtDescricao, jTxtVolume,
-                jTxtEditora, jBtnConfirmar, jBtnCancelar);
+                jTxtEditora, jBtnConfirmar, jBtnCancelar, jBtnExcluir, jBtnAlterar);
     }
 
     
@@ -297,7 +297,7 @@ public class JDlgProdutos extends javax.swing.JDialog {
                 jTxtAutor, jTxtDescricao, jTxtVolume,
                 jTxtEditora, jBtnConfirmar, jBtnCancelar);
 
-          Util.habilitar(true , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+          Util.habilitar(true , jBtnIncluir,  jBtnPesquisar);
            Util.limpar(jTxtCodigo, jTxtNome, jTxtValor,
                 jTxtAutor, jTxtDescricao, jTxtVolume,
                 jTxtEditora);
