@@ -154,8 +154,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMniVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMniVendasActionPerformed
         // TODO add your handling code here:
-        //JDlgVenda jDlgVenda = new JDlgVenda(null, true);
-        //jDlgVenda.setVisible(true);
+       JDlgVendas jDlgVendas = new JDlgVendas(null, true);
+       jDlgVendas.setVisible(true);
     }//GEN-LAST:event_jMniVendasActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
