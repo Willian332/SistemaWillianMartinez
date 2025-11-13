@@ -28,7 +28,7 @@ import javax.persistence.UniqueConstraint;
 public class WamCliente  implements java.io.Serializable {
 
 
-     private Integer idCliente;
+     private int idCliente;
      private String wamNome;
      private String wamRg;
      private String wamCpf;
@@ -75,11 +75,11 @@ public class WamCliente  implements java.io.Serializable {
 
     
     @Column(name="idCliente", unique=true, nullable=false)
-    public Integer getIdCliente() {
+    public int getIdCliente() {
         return this.idCliente;
     }
     
-    public void setIdCliente(Integer idCliente) {
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -225,12 +225,18 @@ public class WamCliente  implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return this.getWamNome();
+        return this.wamNome;
     }
 
-
-
-
+     @Override
+     public boolean equals (Object object) {
+         if(object instanceof  WamCliente) {
+             if(this.idCliente == ((WamCliente)object).idCliente)
+                 return true;
+         } return false;
+     }
 }
+
+
 
 

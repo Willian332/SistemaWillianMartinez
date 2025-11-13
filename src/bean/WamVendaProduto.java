@@ -2,7 +2,7 @@ package bean;
 // Generated 11/10/2025 18:12:54 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,12 +27,12 @@ public class WamVendaProduto  implements java.io.Serializable {
      private WamProduto wamProduto;
      private WamVenda wamVenda;
      private int wamQuantidade;
-     private BigDecimal wamValorUnitario;
+     private double wamValorUnitario;
 
     public WamVendaProduto() {
     }
 
-    public WamVendaProduto(WamProduto wamProduto, WamVenda wamVenda, int wamQuantidade, BigDecimal wamValorUnitario) {
+    public WamVendaProduto(WamProduto wamProduto, WamVenda wamVenda, int wamQuantidade, double wamValorUnitario) {
        this.wamProduto = wamProduto;
        this.wamVenda = wamVenda;
        this.wamQuantidade = wamQuantidade;
@@ -83,11 +83,11 @@ public class WamVendaProduto  implements java.io.Serializable {
 
     
     @Column(name="wam_valorUnitario", nullable=false, precision=10)
-    public BigDecimal getWamValorUnitario() {
+    public double getWamValorUnitario() {
         return this.wamValorUnitario;
     }
     
-    public void setWamValorUnitario(BigDecimal wamValorUnitario) {
+    public void setWamValorUnitario(double wamValorUnitario) {
         this.wamValorUnitario = wamValorUnitario;
     }
 

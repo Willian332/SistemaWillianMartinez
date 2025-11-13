@@ -65,6 +65,11 @@ public class JDlgVendedorPesquisar extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jTable1MouseDragged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jBtnOK.setText("OK");
@@ -105,6 +110,13 @@ public class JDlgVendedorPesquisar extends javax.swing.JDialog {
         setVisible(false);
         
     }//GEN-LAST:event_jBtnOKActionPerformed
+
+    private void jTable1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseDragged
+        // TODO add your handling code here:
+         if(evt.getClickCount() == 2){
+        jBtnOKActionPerformed(null);
+        }
+    }//GEN-LAST:event_jTable1MouseDragged
 
     /**
      * @param args the command line arguments

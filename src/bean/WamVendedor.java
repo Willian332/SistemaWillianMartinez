@@ -29,7 +29,7 @@ import javax.persistence.UniqueConstraint;
 public class WamVendedor  implements java.io.Serializable {
 
 
-     private Integer wamIdVendedor;
+     private int wamIdVendedor;
      private String wamNome;
      private String wamCpf;
      private Date wamDataNascimento;
@@ -60,11 +60,11 @@ public class WamVendedor  implements java.io.Serializable {
 
     
     @Column(name="wam_idVendedor", unique=true, nullable=false)
-    public Integer getWamIdVendedor() {
+    public int getWamIdVendedor() {
         return this.wamIdVendedor;
     }
     
-    public void setWamIdVendedor(Integer wamIdVendedor) {
+    public void setWamIdVendedor(int wamIdVendedor) {
         this.wamIdVendedor = wamIdVendedor;
     }
 
@@ -136,12 +136,18 @@ public class WamVendedor  implements java.io.Serializable {
 //    public void setWamVendas(Set wamVendas) {
 //        this.wamVendas = wamVendas;
 //    }
-    @Override
+     @Override
     public String toString() {
-        return this.getWamNome();  
+        return this.wamNome;  
     }
 
-
+     @Override
+     public boolean equals (Object object) {
+         if(object instanceof  WamVendedor) {
+             if(this.wamIdVendedor == ((WamVendedor)object).wamIdVendedor)
+                 return true;
+         } return false;
+     }
 
 }
 

@@ -124,6 +124,12 @@ public class JDlgVendas extends javax.swing.JDialog {
 
         jLabel1.setText("Venda");
 
+        jTextCodigoVEnda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCodigoVEndaActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Cliente");
 
         jLabel3.setText("Vendedor");
@@ -137,6 +143,11 @@ public class JDlgVendas extends javax.swing.JDialog {
         jLabel7.setText("Data");
 
         jCboVendedor.setToolTipText("cliente");
+        jCboVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCboVendedorActionPerformed(evt);
+            }
+        });
 
         jCboCliente.setToolTipText("");
         jCboCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -294,15 +305,14 @@ public class JDlgVendas extends javax.swing.JDialog {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addComponent(jLabel7)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                            .addComponent(jLabel6))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jCboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -374,7 +384,7 @@ public class JDlgVendas extends javax.swing.JDialog {
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
         Util.habilitar(false, jTextCodigoVEnda, jCboCliente,jFrmtData ,jCboVendedor, jTextValor, jTextDesconto, jTxtTotal, jBtnConfirmar, jBtnCancelar);
-        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.habilitar(true, jBtnIncluir,jBtnPesquisar);
         Util.limpar(jTextCodigoVEnda, jCboCliente,jFrmtData ,jCboVendedor, jTextValor, jTextDesconto, jTxtTotal);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
@@ -427,6 +437,14 @@ public class JDlgVendas extends javax.swing.JDialog {
     private void jCboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCboClienteActionPerformed
+
+    private void jCboVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboVendedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCboVendedorActionPerformed
+
+    private void jTextCodigoVEndaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCodigoVEndaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextCodigoVEndaActionPerformed
 
     /**
      * @param args the command line arguments

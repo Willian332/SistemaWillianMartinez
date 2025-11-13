@@ -292,7 +292,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         // TODO add your handling code here:
          Util.habilitar(true , jTxtCodigo, jTxtNome, jTxtApelido, jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha, jCheckBoxAtivo, jCBxNivel, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido);
+        Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido, jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha, jCheckBoxAtivo, jCBxNivel);
         
         incluir = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
@@ -356,7 +356,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido,
                 jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha,
                 jCBxNivel, jBtnConfirmar, jBtnCancelar, jCheckBoxAtivo );
-        Util.habilitar(true, jBtnIncluir,jBtnExcluir, jBtnAlterar, jBtnPesquisar);
+        Util.habilitar(true, jBtnIncluir,jBtnPesquisar);
         Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido, jCBxNivel);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 

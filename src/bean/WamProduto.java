@@ -24,7 +24,7 @@ import javax.persistence.Table;
 public class WamProduto  implements java.io.Serializable {
 
 
-     private Integer idProduto;
+     private int idProduto;
      private String wamNome;
      private Double wamValor;
      private String wamAutor;
@@ -55,11 +55,11 @@ public class WamProduto  implements java.io.Serializable {
 
     
     @Column(name="idProduto", unique=true, nullable=false)
-    public Integer getIdProduto() {
+    public int getIdProduto() {
         return this.idProduto;
     }
     
-    public void setIdProduto(Integer idProduto) {
+    public void setIdProduto(int idProduto) {
         this.idProduto = idProduto;
     }
 
@@ -132,8 +132,19 @@ public class WamProduto  implements java.io.Serializable {
 //        this.wamVendaProdutos = wamVendaProdutos;
 //    }
 
-
-
+      
+     @Override
+     public String toString() {
+     return this.wamNome;
+     }
+     
+     @Override
+     public boolean equals (Object object) {
+         if(object instanceof  WamProduto) {
+             if(this.idProduto == ((WamProduto)object).idProduto)
+                 return true;
+         } return false;
+     }
 
 }
 

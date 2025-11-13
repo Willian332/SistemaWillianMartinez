@@ -437,9 +437,10 @@ public class JDlgClientes extends javax.swing.JDialog {
         // TODO add your handling code here:
         Util.habilitar(false,jTxtCodigo, jTxtCelular, jTxtCep, jTextEmail, jTxtCidade, jTxtNome,
                 jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa, jTxtEstado,jFCpf,jFormattedTextDta, jBtnConfirmar, jBtnCancelar);
-         Util.habilitar(true , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+         Util.habilitar(true , jBtnIncluir, jBtnPesquisar);
+         
           Util.limpar(jTxtCodigo, jTxtCelular, jTxtCep, jTextEmail, jTxtCidade, jTxtNome,
-                jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa, jTxtEstado, jBtnConfirmar, jBtnCancelar);
+                jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa, jTxtEstado,jFCpf,jFormattedTextDta, jBtnConfirmar, jBtnCancelar);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
