@@ -259,18 +259,18 @@ public class JDlgProdutos extends javax.swing.JDialog {
         JDlgProdutosPesquisar jDlgProdutosPesquisar = new JDlgProdutosPesquisar(null, true);     
         jDlgProdutosPesquisar.setTelaPai(this);
         jDlgProdutosPesquisar.setVisible(true);
+        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+         Util.habilitar(false, jBtnConfirmar, jBtnIncluir, jBtnCancelar);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtNome, jTxtValor,
+        Util.habilitar(true,jTxtNome, jTxtValor,
                 jTxtAutor, jTxtDescricao, jTxtVolume,
                 jTxtEditora, jBtnConfirmar, jBtnCancelar);
           Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
           jTxtNome.grabFocus();
-           Util.limpar(jTxtCodigo, jTxtNome, jTxtValor,
-                jTxtAutor, jTxtDescricao, jTxtVolume,
-                jTxtEditora);
+
           
           incluir = false;
           

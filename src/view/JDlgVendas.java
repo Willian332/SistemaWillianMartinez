@@ -11,6 +11,7 @@ import bean.WamVendedor;
 import dao.ClientesDAO;
 import dao.VendasDAO;
 import dao.VendadeorDAO;
+import java.util.ArrayList;
 import java.util.List;
 import tools.Util;
 import javax.swing.JOptionPane;
@@ -20,6 +21,8 @@ import javax.swing.JOptionPane;
  * @author user
  */
 public class JDlgVendas extends javax.swing.JDialog {
+    
+    ControllerVendasProdutos controllerVendasProdutos;
 
     /**
      * Creates new form JDlgVendas
@@ -44,6 +47,10 @@ public class JDlgVendas extends javax.swing.JDialog {
         for (int i = 0; i < listaVendedor.size(); i++){
         jCboVendedor.addItem((WamVendedor) listaVendedor.get(i));
         }
+        
+         controllerVendasProdutos  = new ControllerVendasProdutos();
+        controllerVendasProdutos.setList(new ArrayList());
+        jTable1.setModel(controllerVendasProdutos);
     }
     
     public WamVenda viewBean() {
@@ -411,14 +418,17 @@ public class JDlgVendas extends javax.swing.JDialog {
         JDlgVendasPesquisar jDlgVendasPesquisarr = new JDlgVendasPesquisar(null, true);     
         jDlgVendasPesquisarr.setTelaPai(this);
         jDlgVendasPesquisarr.setVisible(true);
+        Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+         Util.habilitar(false, jBtnConfirmar, jBtnIncluir, jBtnCancelar);
         
         foiPesquisado = true;
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirProudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirProudActionPerformed
         // TODO add your handling code here:
-        JDlgVendasProdutos jdlgVendasProdutos = new JDlgVendasProdutos(null, true);
-        jdlgVendasProdutos.setVisible(true);
+         JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(null, true);
+        jDlgVendasProdutos.setTelaPai(this);
+        jDlgVendasProdutos.setVisible(true);
         
     }//GEN-LAST:event_jBtnIncluirProudActionPerformed
 
