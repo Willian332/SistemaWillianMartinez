@@ -426,8 +426,8 @@ public class JDlgVendas extends javax.swing.JDialog {
 
     private void jBtnIncluirProudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirProudActionPerformed
         // TODO add your handling code here:
-         JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(null, true);
-        jDlgVendasProdutos.setTelaPai(this);
+        JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(null, true);
+        jDlgVendasProdutos.setWam_TelaPai(this);
         jDlgVendasProdutos.setVisible(true);
         
     }//GEN-LAST:event_jBtnIncluirProudActionPerformed
@@ -440,8 +440,13 @@ public class JDlgVendas extends javax.swing.JDialog {
 
     private void jBtnExcluirProudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirProudActionPerformed
         // TODO add your handling code here:
-         JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(null, true);
-        jDlgVendasProdutos.setVisible(true);
+           if (jTable1.getSelectedRow() == -1) {
+            Util.mensagem("Oh seu loco, precisa selecionar uma linha.");
+        } else {
+            if (Util.perguntar("Deseja excluir o produto?") == true) {
+                controllerVendasProdutos.removeBean(jTable1.getSelectedRow());
+            }
+        }
     }//GEN-LAST:event_jBtnExcluirProudActionPerformed
 
     private void jCboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboClienteActionPerformed

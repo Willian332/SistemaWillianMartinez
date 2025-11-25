@@ -50,11 +50,11 @@ public class ControllerVendasProdutos extends AbstractTableModel{
         } else if (columnIndex ==1) {
             return pedProd.getWamProduto().getWamNome();        
         } else if (columnIndex ==2) {
-            return pedProd.getWamProduto().getWamValor();
-        } else if (columnIndex ==3) {
             return pedProd.getWamQuantidade();
+        } else if (columnIndex ==3) {
+            return pedProd.getWamValorUnitario();
         }else if (columnIndex ==4) {
-            return pedProd.getWamQuantidade() * pedProd.getWamValorUnitario();
+            return pedProd.getWamValorUnitario()* pedProd.getWamQuantidade();
         }
         return "";
     }

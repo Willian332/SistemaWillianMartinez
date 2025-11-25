@@ -81,8 +81,8 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextValorUnit" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextQuantidade" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTexTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextQuantidade" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -142,6 +142,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextValorUnit">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextValorUnitKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -149,6 +152,10 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextQuantidade">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextQuantidadeActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextQuantidadeKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>

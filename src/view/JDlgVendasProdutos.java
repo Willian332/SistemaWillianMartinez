@@ -6,6 +6,7 @@
 package view;
 
 import bean.WamProduto;
+import bean.WamVendaProduto;
 import dao.ProdutosDAO;
 import java.util.List;
 import tools.Util;
@@ -16,6 +17,8 @@ import tools.Util;
  */
 public class JDlgVendasProdutos extends javax.swing.JDialog {
 
+    
+        JDlgVendas jDlgVendas;
     /**
      * Creates new form JDlgVendasProdutos
      */
@@ -23,13 +26,20 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-          Util.habilitar(false, jTexTotal, jTextValorUnit, jTextQuantidade);
+          Util.habilitar(false, jTexTotal, jTextValorUnit);
         jTextQuantidade.setText("1");
         ProdutosDAO produtosDAO = new ProdutosDAO();
         List lista = (List) produtosDAO.listAll();
         for (int i = 0; i < lista.size(); i++) {
             jComboProduto.addItem((WamProduto) lista.get(i));            
         }
+        
+        
+    }
+    
+    
+     public void setWam_TelaPai(JDlgVendas jDlgVendas) {
+        this.jDlgVendas = jDlgVendas;
     }
 
     /**
@@ -80,7 +90,24 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
 
         jLabel1.setText("Valor Unitário");
 
+        jTextValorUnit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextValorUnitKeyReleased(evt);
+            }
+        });
+
         jLabel2.setText("Quantidade");
+
+        jTextQuantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextQuantidadeActionPerformed(evt);
+            }
+        });
+        jTextQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextQuantidadeKeyReleased(evt);
+            }
+        });
 
         jLabel3.setText("Total");
 
@@ -134,8 +161,8 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextValorUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTexTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTexTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnOK)
@@ -148,7 +175,13 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
+         WamVendaProduto wamVendaProduto = new WamVendaProduto();
+        wamVendaProduto.setWamProduto((WamProduto) jComboProduto.getSelectedItem());
+        wamVendaProduto.setWamQuantidade(Util.strParaInt(jTextQuantidade.getText()) );
+        wamVendaProduto.setWamValorUnitario(Util.strParaDouble(jTextValorUnit.getText()) );                
+        jDlgVendas.controllerVendasProdutos.addBean(wamVendaProduto);
         setVisible(false);
+        
     }//GEN-LAST:event_jBtnOKActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
@@ -163,7 +196,29 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
         jTextValorUnit.setText(Util.DoubleParaStr(produtos.getWamValor()));
         int quant = Util.strParaInt(jTextQuantidade.getText());
         jTexTotal.setText(Util.DoubleParaStr(quant*produtos.getWamValor()) );
+        
+        
     }//GEN-LAST:event_jComboProdutoActionPerformed
+
+    private void jTextValorUnitKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextValorUnitKeyReleased
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_jTextValorUnitKeyReleased
+
+    private void jTextQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextQuantidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextQuantidadeActionPerformed
+
+    private void jTextQuantidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextQuantidadeKeyReleased
+        // TODO add your handling code here:
+          if(jTextQuantidade.getText().isEmpty() == false){
+        WamProduto wamProduto = (WamProduto) jComboProduto.getSelectedItem();
+        int quant = Util.strParaInt(jTextQuantidade.getText());
+        jTexTotal.setText(Util.DoubleParaStr(quant * wamProduto.getWamValor()));
+       } else {
+           Util.limpar(jTexTotal);
+       }
+    }//GEN-LAST:event_jTextQuantidadeKeyReleased
 
     /**
      * @param args the command line arguments
