@@ -7,6 +7,7 @@ import view.ControllerClientes;
 import dao.ClientesDAO;
 import java.util.List;
 import bean.WamCliente;
+import tools.Util;
 /**
  *
  * @author user
@@ -105,10 +106,13 @@ public class JDlgClientesPesquisar extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-        int linsel = jTable1.getSelectedRow();
-        WamCliente wamCliente = (WamCliente) controllerClientes.getBean(jTable1.getSelectedRow());
-        jDlgClientes.beanView(wamCliente);
-        setVisible(false);
+        if (jTable1.getSelectedRow() == -1) {
+            Util.mensagem("Nenhum registro foi selecionada. Favor selecionar um registro.");
+        } else {
+           WamCliente wamCliente = (WamCliente) controllerClientes.getBean(jTable1.getSelectedRow());
+            jDlgClientes.beanView(wamCliente);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked

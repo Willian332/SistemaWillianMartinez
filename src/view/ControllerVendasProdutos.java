@@ -17,6 +17,7 @@ public class ControllerVendasProdutos extends AbstractTableModel{
 
     public void setList(List lstWam_VendProdu) {
         this.lstWam_VendProdu = lstWam_VendProdu;
+        this.fireTableDataChanged();
     }
     
     public WamVendaProduto getBean(int rowIndex) {

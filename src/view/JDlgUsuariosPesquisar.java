@@ -7,6 +7,7 @@ package view;
 import dao.UsuariosDAO;
 import java.util.List;
 import bean.WamUsuario;
+import tools.Util;
 
 /**
  *
@@ -106,14 +107,13 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
-
-        int linsel = jTable1.getSelectedRow();
-
-        
-
-        WamUsuario wamUsuario = (WamUsuario) controllerUsuarios.getBean(jTable1.getSelectedRow());
-        jDlgUsuarios.beanView(wamUsuario);
-        this.setVisible(false);
+  if (jTable1.getSelectedRow() == -1) {
+            Util.mensagem("Nenhum registro foi selecionada. Favor selecionar um registro.");
+        } else {
+           WamUsuario wamUsuario = (WamUsuario) controllerUsuarios.getBean(jTable1.getSelectedRow());
+            jDlgUsuarios.beanView(wamUsuario);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jBtnOKActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
