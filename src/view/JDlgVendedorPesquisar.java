@@ -35,7 +35,7 @@ public class JDlgVendedorPesquisar extends javax.swing.JDialog {
         jTable1.setModel(controllerVendedor);
     }
     
-    public void setTelaPai( JDlgVendedor jDlgVendedor) {;
+    public void setWam_TelaPai( JDlgVendedor jDlgVendedor) {;
         this.jDlgVendedor = jDlgVendedor;
     }
 
@@ -68,6 +68,11 @@ public class JDlgVendedorPesquisar extends javax.swing.JDialog {
         jTable1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jTable1MouseDragged(evt);
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -113,10 +118,14 @@ public class JDlgVendedorPesquisar extends javax.swing.JDialog {
 
     private void jTable1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseDragged
         // TODO add your handling code here:
-         if(evt.getClickCount() == 2){
+    }//GEN-LAST:event_jTable1MouseDragged
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+          if(evt.getClickCount() == 2){
         jBtnOKActionPerformed(null);
         }
-    }//GEN-LAST:event_jTable1MouseDragged
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

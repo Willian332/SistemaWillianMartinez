@@ -18,7 +18,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
      * Creates new form JDlgVendedor
      */
      private boolean incluir;
-    private boolean procurar = false;
+   
     public JDlgVendedor(java.awt.Frame parent, boolean modal) {
          super(parent, modal);
         initComponents();
@@ -310,7 +310,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
          JDlgVendedorPesquisar jDlgVendedorPesquisar = new JDlgVendedorPesquisar(null, true);     
-        jDlgVendedorPesquisar.setTelaPai(this);
+        jDlgVendedorPesquisar.setWam_TelaPai(this);
         jDlgVendedorPesquisar.setVisible(true);
         
         Util.habilitar(false , jBtnIncluir,  jBtnPesquisar);
@@ -332,6 +332,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
 
          Util.habilitar(true , jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jTxtCommisao, jTxtNumero, jTxtTelefone, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false , jBtnIncluir, jBtnAltera, jBtnExcluir, jBtnPesquisar);
+        Util.limpar( jTxtCodigo, jTxtNome, jFcCpf, jFormattedTextField1, jTxtCommisao, jTxtNumero, jTxtTelefone);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     /**

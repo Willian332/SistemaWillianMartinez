@@ -8,9 +8,11 @@ package view;
 import bean.WamCliente;
 import bean.WamVenda;
 import bean.WamVendedor;
+import bean.WamVendaProduto;
 import dao.ClientesDAO;
 import dao.VendasDAO;
 import dao.VendadeorDAO;
+import dao.VendasProdutosDAO;
 import java.util.ArrayList;
 import java.util.List;
 import tools.Util;
@@ -398,11 +400,18 @@ public class JDlgVendas extends javax.swing.JDialog {
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
         VendasDAO vendasDAO = new VendasDAO();
-        if(incluir == true){
-           
-            vendasDAO.insert(viewBean());
-        }else{
-            vendasDAO.update(viewBean());
+        VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
+        WamVenda wamVenda = viewBean();
+        if (incluir == true) {
+            vendasDAO.insert(wamVenda);
+            for (int ind = 0; ind < jTable1.getRowCount(); ind++) {
+                WamVendaProduto wamVendaProduto = controllerVendasProdutos.getBean(ind);
+                wamVendaProduto.setWamVenda(wamVenda);
+                vendasProdutosDAO.insert(wamVendaProduto);
+            }
+        } else {
+            vendasDAO.update(wamVenda);
+
         }
 
        Util.habilitar(false, jTextCodigoVEnda, jCboCliente, jCboVendedor, jTextValor, jTextDesconto, jTxtTotal,jFrmtData, jBtnConfirmar, jBtnCancelar);
@@ -441,7 +450,7 @@ public class JDlgVendas extends javax.swing.JDialog {
     private void jBtnExcluirProudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirProudActionPerformed
         // TODO add your handling code here:
            if (jTable1.getSelectedRow() == -1) {
-            Util.mensagem("Oh seu loco, precisa selecionar uma linha.");
+            Util.mensagem("Importante! Selecionar a linha primeiro.");
         } else {
             if (Util.perguntar("Deseja excluir o produto?") == true) {
                 controllerVendasProdutos.removeBean(jTable1.getSelectedRow());

@@ -345,6 +345,8 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         JDlgUsuariosPesquisar jDlgUsuariosPesquisar = new JDlgUsuariosPesquisar(null, true);     
         jDlgUsuariosPesquisar.setTelaPai(this);
         jDlgUsuariosPesquisar.setVisible(true);
+         Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+         Util.habilitar(false, jBtnConfirmar, jBtnIncluir, jBtnCancelar);
         
         
        
@@ -357,7 +359,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
                 jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha,
                 jCBxNivel, jBtnConfirmar, jBtnCancelar, jCheckBoxAtivo );
         Util.habilitar(true, jBtnIncluir,jBtnPesquisar);
-        Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido, jCBxNivel);
+        Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido, jCBxNivel, jFormattedTextFieldCPF, jFormattedTextFieldData);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
