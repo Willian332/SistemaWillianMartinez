@@ -457,6 +457,8 @@ public class JDlgClientes extends javax.swing.JDialog {
          Util.habilitar(false,jTxtCodigo, jTxtCelular, jTxtCep, jTextEmail, jTxtCep, jTxtCidade, jTxtNome,
                 jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa,jFCpf , jFormattedTextDta,jTxtEstado, jBtnConfirmar, jBtnCancelar);
          Util.habilitar(true , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+         Util.limpar(jTxtCodigo, jTxtCelular, jTxtCep, jTextEmail, jTxtCep, jTxtCidade, jTxtNome,
+                jTxtBairro, jTxtTelefone, jTxtRg, jCbSexo, jCheckBox1, jTxtEmpresa,jFCpf , jFormattedTextDta,jTxtEstado);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed

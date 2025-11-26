@@ -59,6 +59,18 @@ public class UsuariosDAO extends DaoAbstract{
         session.getTransaction().commit();
         return lista;
     }
+    
+     public boolean wam_verificarLogin(String user, String pass) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamUsuario.class);
+        criteria.add(Restrictions.eq("wamNome", user));
+        criteria.add(Restrictions.eq("wamSenha", pass));
+
+        List resultado = criteria.list();
+        session.getTransaction().commit();
+
+        return !resultado.isEmpty();
+}
      public static void main(String[] args) {
         UsuariosDAO usuariosDAO = new UsuariosDAO();
         usuariosDAO.listAll();

@@ -6,6 +6,7 @@ package view;
 import bean.WamProduto;
 import dao.ProdutosDAO;
 import java.util.List;
+import tools.Util;
 import view.ControllerProdutos;
 
 /**
@@ -107,10 +108,13 @@ public class JDlgProdutosPesquisar extends javax.swing.JDialog {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
         
-        int linsel = jTable1.getSelectedRow();
-        WamProduto wamProduto = (WamProduto) controllerProdutos.getBean(jTable1.getSelectedRow());
-        jDlgProdutos.beanView(wamProduto);
-        this.setVisible(false);
+         if (jTable1.getSelectedRow() == -1) {
+            Util.mensagem("Nenhum registro foi selecionada. Favor selecionar um registro.");
+        } else {
+           WamProduto wamProduto = (WamProduto) controllerProdutos.getBean(jTable1.getSelectedRow());
+            jDlgProdutos.beanView(wamProduto);
+            this.setVisible(false);
+        }
         
     }//GEN-LAST:event_jBtnOkActionPerformed
 
