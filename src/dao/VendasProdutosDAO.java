@@ -4,6 +4,7 @@
  */
 package dao;
 
+import bean.WamVenda;
 import bean.WamVendaProduto;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -49,15 +50,15 @@ public class VendasProdutosDAO extends DaoAbstract {
         session.getTransaction().commit();
         return lista;
     }
-    
-//    public Object listProdutos( venda) {
-//        session.beginTransaction();
-//        Criteria criteria = session.createCriteria(PedidosProdutos.class);
-//        criteria.add(Restrictions.eq("pedidos", pedidos));
-//        List lista = criteria.list();
-//        session.getTransaction().commit();
-//        return lista;
-//    }
+     public Object listProdutos(WamVenda wamVenda) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamVendaProduto.class);
+        criteria.add(Restrictions.eq("wamVenda", wamVenda));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
 
     @Override
     public Object listAll() {

@@ -78,9 +78,9 @@ public class JDlgVendas extends javax.swing.JDialog {
         jTextDesconto.setText(Util.DoubleParaStr(wamVenda.getWamDesconto()));
         jTxtTotal.setText(Util.DoubleParaStr(wamVenda.getWamValorFinal()));
         
-//         VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
-//        List lista = (List) vendasProdutosDAO.listProdutos(vendas);
-//        controllerVendasProdutos.setList(lista);
+       VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
+       List lista = (List) vendasProdutosDAO.listProdutos(wamVenda);
+       controllerVendasProdutos.setList(lista);
 
        
     }
