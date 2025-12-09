@@ -51,7 +51,7 @@ public class WamVendaProduto  implements java.io.Serializable {
         this.wamIdVendaProduto = wamIdVendaProduto;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="wam_idProduto", nullable=false)
     public WamProduto getWamProduto() {
         return this.wamProduto;
@@ -61,7 +61,7 @@ public class WamVendaProduto  implements java.io.Serializable {
         this.wamProduto = wamProduto;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="wam_idVenda", nullable=false)
     public WamVenda getWamVenda() {
         return this.wamVenda;

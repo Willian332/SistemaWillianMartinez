@@ -40,13 +40,18 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMniVendas = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenConsultVendas = new javax.swing.JMenuItem();
+        jMenuConsultClientes = new javax.swing.JMenuItem();
+        jMenuConsutProdutos = new javax.swing.JMenuItem();
+        jMenuConsultUsuario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\u12345677929\\Downloads\\imahenlp.jpg")); // NOI18N
-
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-skyrim-32.png"))); // NOI18N
         jMenu1.setText("Cadastro");
 
+        jMniUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-anime-32.png"))); // NOI18N
         jMniUsuario.setText("Usuário");
         jMniUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +60,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMniUsuario);
 
+        jMniVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-kuromi-32.png"))); // NOI18N
         jMniVendedor.setText("Vendedor");
         jMniVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +69,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMniVendedor);
 
+        jMniCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-anime-32.png"))); // NOI18N
         jMniCliente.setText("Cliente");
         jMniCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +78,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMniCliente);
 
+        jMniProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-manga-32.png"))); // NOI18N
         jMniProdutos.setText("Produtos");
         jMniProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +88,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMniProdutos);
         jMenu1.add(jSeparator1);
 
+        jMniSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-espada-32.png"))); // NOI18N
         jMniSair.setText("Sair");
         jMniSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +99,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-exoesqueleto-32.png"))); // NOI18N
         jMenu2.setText("Movimento");
         jMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +107,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jMniVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-dinheiro-32.png"))); // NOI18N
         jMniVendas.setText("Vendas");
         jMniVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +116,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMniVendas);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-manga-32.png"))); // NOI18N
         jMenuItem1.setText("Produtos_Vendas");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +126,37 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu2.add(jMenuItem1);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-espada-32.png"))); // NOI18N
+        jMenu3.setText("Consultas");
+
+        jMenConsultVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-dinheiro-32.png"))); // NOI18N
+        jMenConsultVendas.setText("Vendas");
+        jMenu3.add(jMenConsultVendas);
+
+        jMenuConsultClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-anime-48.png"))); // NOI18N
+        jMenuConsultClientes.setText("Clientes");
+        jMenuConsultClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConsultClientesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuConsultClientes);
+
+        jMenuConsutProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-manga-32.png"))); // NOI18N
+        jMenuConsutProdutos.setText("Produtos");
+        jMenuConsutProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConsutProdutosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuConsutProdutos);
+
+        jMenuConsultUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-anime-32.png"))); // NOI18N
+        jMenuConsultUsuario.setText("Usuario");
+        jMenu3.add(jMenuConsultUsuario);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -125,7 +168,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1099, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1086, Short.MAX_VALUE)
         );
 
         pack();
@@ -176,6 +219,14 @@ public class JFrmPrincipal extends javax.swing.JFrame {
          System.exit(0);
     }//GEN-LAST:event_jMniSairActionPerformed
 
+    private void jMenuConsultClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuConsultClientesActionPerformed
+
+    private void jMenuConsutProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsutProdutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuConsutProdutosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,9 +265,14 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem jMenConsultVendas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuConsultClientes;
+    private javax.swing.JMenuItem jMenuConsultUsuario;
+    private javax.swing.JMenuItem jMenuConsutProdutos;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMniCliente;
     private javax.swing.JMenuItem jMniProdutos;

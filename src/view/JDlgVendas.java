@@ -387,12 +387,14 @@ public class JDlgVendas extends javax.swing.JDialog {
        if (Util.perguntar("Deseja realmente excluir o registro?")) {
             VendasDAO vendasDAO = new VendasDAO();
             VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
-            WamVenda wamVenda = viewBean();            
+                
             for (int ind = 0; ind < jTable1.getRowCount(); ind++) {
                  WamVendaProduto wamVendaProduto = controllerVendasProdutos.getBean(ind);
                 vendasProdutosDAO.delete(wamVendaProduto);
+                
             }
-            vendasDAO.delete(wamVenda);
+                
+            vendasDAO.delete(viewBean());
         }
        
        Util.limpar(jTextCodigoVEnda, jCboCliente, jCboVendedor,jFrmtData, jTextValor, jTextDesconto, jTxtTotal);
