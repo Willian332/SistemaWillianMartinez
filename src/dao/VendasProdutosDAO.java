@@ -40,6 +40,18 @@ public class VendasProdutosDAO extends DaoAbstract {
         session.delete(object);
         session.getTransaction().commit();
     }
+    
+     public void deleteVendas(WamVenda wamVenda){
+        //pegar produtos do pedido
+        List lista = (List) listProdutos(wamVenda);
+        //remover todos os produtos daquele pedido
+        //fazer um for 
+        for (int i = 0; i < lista.size(); i++) {
+            WamVendaProduto wamVendaProduto = (WamVendaProduto) lista.get(i);
+            delete(wamVendaProduto);
+            
+        }
+     }
 
     @Override
     public Object list(int id) {

@@ -384,13 +384,19 @@ public class JDlgVendas extends javax.swing.JDialog {
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-       if (Util.perguntar("Deseja Excluir?") == true) {
+       if (Util.perguntar("Deseja realmente excluir o registro?")) {
             VendasDAO vendasDAO = new VendasDAO();
-            vendasDAO.delete(viewBean());
-
+            VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
+            WamVenda wamVenda = viewBean();            
+            for (int ind = 0; ind < jTable1.getRowCount(); ind++) {
+                 WamVendaProduto wamVendaProduto = controllerVendasProdutos.getBean(ind);
+                vendasProdutosDAO.delete(wamVendaProduto);
+            }
+            vendasDAO.delete(wamVenda);
         }
        
        Util.limpar(jTextCodigoVEnda, jCboCliente, jCboVendedor,jFrmtData, jTextValor, jTextDesconto, jTxtTotal);
+       controllerVendasProdutos.setList(new ArrayList());
 
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
@@ -415,15 +421,22 @@ public class JDlgVendas extends javax.swing.JDialog {
             }
         } else {
             vendasDAO.update(wamVenda);
+            vendasProdutosDAO.delete(wamVenda);
+            for (int ind = 0; ind < jTable1.getRowCount(); ind++) {
+                WamVendaProduto wamVendaProduto = controllerVendasProdutos.getBean(ind);
+                wamVendaProduto.setWamVenda(wamVenda);
+                vendasProdutosDAO.insert(wamVendaProduto);
 
         }
-
-       Util.habilitar(false, jTextCodigoVEnda, jCboCliente, jCboVendedor, jTextValor, jTextDesconto, jTxtTotal,jFrmtData, jBtnConfirmar, jBtnCancelar);
+     
+    }//GEN-LAST:event_jBtnConfirmarActionPerformed
+    Util.habilitar(false, jTextCodigoVEnda, jCboCliente, jCboVendedor, jTextValor, jTextDesconto, jTxtTotal,jFrmtData, jBtnConfirmar, jBtnCancelar);
        Util.habilitar(true , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
        Util.limpar(jTextCodigoVEnda, jCboCliente,jFrmtData ,jCboVendedor, jTextValor, jTextDesconto, jTxtTotal);
        controllerVendasProdutos.setList(new ArrayList());
-    }//GEN-LAST:event_jBtnConfirmarActionPerformed
-
+    
+    
+    }
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
 

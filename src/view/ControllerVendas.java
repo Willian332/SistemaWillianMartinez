@@ -14,14 +14,14 @@ import bean.WamVenda;
  */
 public class ControllerVendas extends AbstractTableModel{
 
-   List lista;
+    private  List lista;
     
     public void setList(List lista) {
         this.lista = lista;
     }
     
     public Object getBean(int rowIndex) {
-        return lista.get(rowIndex);
+        return (WamVenda) lista.get(rowIndex);
     }
     
     @Override
