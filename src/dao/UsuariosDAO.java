@@ -50,6 +50,37 @@ public class UsuariosDAO extends DaoAbstract{
         session.getTransaction().commit();
         return lista;
     }
+    
+    public Object WAM_list_VerificarAtivo(boolean ativo) {
+         session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamUsuario.class);
+        // converte booleano para string 
+        String ativoStr = ativo ? "S" : "N"; 
+        criteria.add(Restrictions.eq("wamAtivo", ativoStr));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+    public Object WAM_list_VerificarCPF(String cpfParcial) {
+         session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamUsuario.class);
+        criteria.add(Restrictions.like("wamCpf", cpfParcial + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+     public Object WAM_list_AtivoCpf(boolean ativo, String cpfParcial) {
+       session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamUsuario.class);
+        String ativoStr = ativo ? "S" : "N"; 
+        criteria.add(Restrictions.eq("wamAtivo", ativoStr));
+        criteria.add(Restrictions.like("wamCpf", cpfParcial + "%")); 
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
 
     @Override
     public Object listAll() {

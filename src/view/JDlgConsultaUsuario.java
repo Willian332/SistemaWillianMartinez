@@ -5,6 +5,10 @@
  */
 package view;
 
+import java.util.List;
+
+import dao.UsuariosDAO;
+
 /**
  *
  * @author u12345677929
@@ -14,9 +18,18 @@ public class JDlgConsultaUsuario extends javax.swing.JDialog {
     /**
      * Creates new form JDlgConsultaUsuario
      */
+    ControllerConsultasUsuarios controllerConsultasUsuarios;
+    UsuariosDAO usuariosDAO;
     public JDlgConsultaUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Consulta Usuario");
+        controllerConsultasUsuarios = new ControllerConsultasUsuarios();
+        usuariosDAO = new UsuariosDAO();
+        List lista = (List) usuariosDAO.listAll();
+        controllerConsultasUsuarios.setList(lista);
+        jTable1.setModel(controllerConsultasUsuarios);
     }
 
     /**
@@ -28,21 +41,143 @@ public class JDlgConsultaUsuario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jBtnConsulta = new javax.swing.JButton();
+        jBtnImprimir = new javax.swing.JButton();
+        jBtnOK = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jFtCpf = new javax.swing.JFormattedTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jBtnConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-espada-32.png"))); // NOI18N
+        jBtnConsulta.setText("Consulta");
+        jBtnConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnConsultaActionPerformed(evt);
+            }
+        });
+
+        jBtnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-impressão-32.png"))); // NOI18N
+        jBtnImprimir.setText("Imprimir");
+
+        jBtnOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-ok-mão-emoji-32.png"))); // NOI18N
+        jBtnOK.setText("OK");
+        jBtnOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnOKActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Cpf os 3 primeiros nhumeros");
+
+        jCheckBox1.setText("Ativo");
+
+        jFtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jCheckBox1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jFtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(46, 46, 46)
+                        .addComponent(jBtnConsulta)))
+                .addContainerGap(51, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBtnImprimir)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnOK)
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBtnConsulta)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jCheckBox1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnImprimir)
+                    .addComponent(jBtnOK))
+                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jBtnOKActionPerformed
+
+    private void jBtnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConsultaActionPerformed
+        // TODO add your handling code here:
+         
+    boolean somenteAtivos = jCheckBox1.isSelected(); 
+  
+    String cpfDigitado = jFtCpf.getText().trim(); // remove espaços em branco
+    cpfDigitado = cpfDigitado.replaceAll("[^0-9]", "");// carcter não numérico
+
+    if (somenteAtivos && !cpfDigitado.isEmpty() && cpfDigitado.length() >= 3) {
+        String cpfParcial = cpfDigitado.substring(0, 3);
+        List lista = (List) usuariosDAO.WAM_list_AtivoCpf(true, cpfParcial);
+        controllerConsultasUsuarios.setList(lista);
+        
+    } else if (somenteAtivos) {
+        
+        List lista = (List) usuariosDAO.WAM_list_VerificarAtivo(true);
+        controllerConsultasUsuarios.setList(lista);
+        
+    } else if (!cpfDigitado.isEmpty() && cpfDigitado.length() >= 3) {
+
+        String cpfParcial = cpfDigitado.substring(0, 3); // ele pega os tres primeiros 
+        List lista = (List) usuariosDAO.WAM_list_VerificarCPF(cpfParcial);
+        controllerConsultasUsuarios.setList(lista);
+        
+    } else {
+        List lista = (List) usuariosDAO.listAll();
+        controllerConsultasUsuarios.setList(lista);
+    }
+        
+        
+    }//GEN-LAST:event_jBtnConsultaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,5 +222,13 @@ public class JDlgConsultaUsuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtnConsulta;
+    private javax.swing.JButton jBtnImprimir;
+    private javax.swing.JButton jBtnOK;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JFormattedTextField jFtCpf;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

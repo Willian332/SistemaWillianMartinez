@@ -15,10 +15,11 @@ import bean.WamUsuario;
  */
 public class ControllerConsultasUsuarios extends AbstractTableModel {
 
-    List lista;
+   private List lista;
 
     public void setList(List lista) {
         this.lista = lista;
+         this.fireTableDataChanged();
     }
 
     public Object getBean(int rowIndex) {
@@ -42,7 +43,7 @@ public class ControllerConsultasUsuarios extends AbstractTableModel {
             return usuarios.getWamIdUsuario();
         }
         if (columnIndex == 1) {
-            return usuarios.getWamNome();
+            return usuarios.getWamAtivo();
         }
         if (columnIndex == 2) {
             return usuarios.getWamCpf();
@@ -57,7 +58,7 @@ public class ControllerConsultasUsuarios extends AbstractTableModel {
             return "Código";
         }
         if (column == 1) {
-            return "Nome";
+            return "Ativo";
         }
         if (column == 2) {
             return "Cpf";
