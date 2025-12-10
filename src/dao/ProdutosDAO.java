@@ -49,6 +49,34 @@ public class ProdutosDAO extends DaoAbstract{
         session.getTransaction().commit();
         return lista;
     }
+    
+    public Object listNome(String nome) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamProduto.class);
+        criteria.add(Restrictions.like("wamNome", "%" + nome + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+        
+    public Object listValor(double valor) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamProduto.class);
+        criteria.add(Restrictions.ge("wamValor", valor));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+    public Object listNomeValor(String nome, double valor) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamProduto.class);
+        criteria.add(Restrictions.like("wamNome", "%" + nome + "%"));
+        criteria.add(Restrictions.ge("wamValor", valor));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
 
     @Override
     public Object listAll() {

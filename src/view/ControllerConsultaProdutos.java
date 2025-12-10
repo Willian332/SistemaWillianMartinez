@@ -14,10 +14,11 @@ import bean.WamProduto;
 public class ControllerConsultaProdutos extends AbstractTableModel{
     
     
-      List lista;
+     private List lista;
 
     public void setList(List lista) {
         this.lista = lista;
+         this.fireTableDataChanged();
     }
 
     public Object getBean(int rowIndex) {
