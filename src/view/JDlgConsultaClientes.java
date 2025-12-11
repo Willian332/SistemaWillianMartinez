@@ -165,12 +165,12 @@ public class JDlgConsultaClientes extends javax.swing.JDialog {
     
      String statusParaBusca;
     if (somenteAtivos) {
-        statusParaBusca = "S";  // Ativos
+        statusParaBusca = "S"; 
     } else {
-        statusParaBusca = "N";  // Inativos
+        statusParaBusca = "N";  
     }
     
-    // 2. Converter valores do combobox para o formato do banco
+   
     String sexoParaBusca = "";
     if ("M".equals(sexo)) {
         sexoParaBusca = "M";

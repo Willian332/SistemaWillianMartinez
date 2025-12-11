@@ -49,9 +49,9 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     public WamUsuario viewBean() {
         WamUsuario wamUsuario = new WamUsuario();
        
-        //int codigo = Util.strParaInt(jTxtCodigo.getText());
-        //wamUsuario.setWamIdUsuario(codigo);
-        // gera automatcio
+        int codigo = Util.strParaInt(jTxtCodigo.getText());
+        wamUsuario.setWamIdUsuario(codigo);
+        
         wamUsuario.setWamNome(jTxtNome.getText());
         wamUsuario.setWamApelido(jTxtApelido.getText());
         wamUsuario.setWamCpf(jFormattedTextFieldCPF.getText());
@@ -323,16 +323,15 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         // TODO add your handling code here:
          UsuariosDAO usuariosDAO = new UsuariosDAO();
         if(incluir == true){
-            // vaiavel para saber qual botão cliqeui no boatao incluir ou confirmar
-        usuariosDAO.insert(viewBean());
+           usuariosDAO.insert(viewBean());
         }else{
           usuariosDAO.update(viewBean());
         }
         
         
-         Util.habilitar(true , jTxtNome, jTxtApelido, jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha, jCheckBoxAtivo, jCBxNivel, jBtnConfirmar, jBtnCancelar);
-        Util.habilitar(false , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limpar( jTxtNome, jTxtApelido, jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha, jCheckBoxAtivo, jCBxNivel);
+         Util.habilitar(false , jTxtNome, jTxtApelido, jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha, jCheckBoxAtivo, jCBxNivel, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limpar(jTxtCodigo,jTxtNome, jTxtApelido, jFormattedTextFieldCPF, jFormattedTextFieldData, jPwfSenha, jCheckBoxAtivo, jCBxNivel);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
