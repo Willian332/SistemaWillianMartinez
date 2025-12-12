@@ -116,6 +116,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenConsultVendas">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Shift+Ctrl+V"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/icons8-dinheiro-32.png"/>
                 </Property>
@@ -127,6 +130,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuConsultClientes">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Shift+Ctrl+C"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/icons8-anime-48.png"/>
                 </Property>
@@ -138,6 +144,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuConsutProdutos">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Shift+Ctrl+P"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/icons8-manga-32.png"/>
                 </Property>
@@ -149,6 +158,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuConsultUsuario">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Shift+Ctrl+U"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/icons8-anime-32.png"/>
                 </Property>
@@ -187,17 +199,17 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jToolBar1" min="-2" pref="621" max="-2" attributes="0"/>
+              <Component id="jToolBar1" min="-2" pref="640" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" pref="14" max="32767" attributes="0"/>
+              <Component id="jLabel1" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jLabel1" pref="394" max="32767" attributes="0"/>
-          <Group type="102" attributes="0">
-              <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jToolBar1" min="-2" pref="46" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -270,7 +282,6 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/img/icons8-anime-48.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="jButton5"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>

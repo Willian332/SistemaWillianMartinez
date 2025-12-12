@@ -22,7 +22,7 @@ public class JDlgVendedor extends javax.swing.JDialog {
     public JDlgVendedor(java.awt.Frame parent, boolean modal) {
          super(parent, modal);
         initComponents();
-        setTitle("Cadastro de Usuários");
+        setTitle("Cadastro de Vendedor");
         setLocationRelativeTo(null);
         Util.habilitar(false, jTxtCodigo, jTxtNome, jFcCpf,
                 jTxtCommisao, jTxtTelefone, jTxtNumero, jFormattedTextField1,

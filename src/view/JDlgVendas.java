@@ -36,6 +36,7 @@ public class JDlgVendas extends javax.swing.JDialog {
      
     public JDlgVendas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setTitle("Vendas - Movimento");
         initComponents();
          Util.habilitar(false, jTextCodigoVEnda,jFrmtData ,jCboCliente, jCboVendedor, jTextValor, jTextDesconto, jTxtTotal, jBtnConfirmar, jBtnExcluir,
                  jBtnCancelar,jBtnIncluirProud, jBtnAlterarProud, jBtnExcluirProud, jBtnAlterar);
@@ -431,8 +432,8 @@ public class JDlgVendas extends javax.swing.JDialog {
                 vendasProdutosDAO.insert(wamVendaProduto);
             }
         } else {
+            vendasProdutosDAO.deleteVendas(wamVenda);
             vendasDAO.update(wamVenda);
-            vendasProdutosDAO.delete(wamVenda);
             for (int ind = 0; ind < jTable1.getRowCount(); ind++) {
                 WamVendaProduto wamVendaProduto = controllerVendasProdutos.getBean(ind);
                 wamVendaProduto.setWamVenda(wamVenda);

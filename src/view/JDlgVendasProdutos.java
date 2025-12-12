@@ -196,6 +196,11 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
         wamVendaProduto.setWamProduto((WamProduto) jComboProduto.getSelectedItem());
         wamVendaProduto.setWamQuantidade(Util.strParaInt(jTextQuantidade.getText()) );
         wamVendaProduto.setWamValorUnitario(Util.strParaDouble(jTextValorUnit.getText()) );                
+        if(incluir == false){
+            jDlgVendas.controllerVendasProdutos.removeBean(jDlgVendas.getjTblWam_VendasProdutos().getSelectedRow());
+            
+        }
+        
         jDlgVendas.controllerVendasProdutos.addBean(wamVendaProduto);
         setVisible(false);
         
