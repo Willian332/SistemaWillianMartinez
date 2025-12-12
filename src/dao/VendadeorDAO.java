@@ -50,6 +50,80 @@ public class VendadeorDAO extends DaoAbstract{
         session.getTransaction().commit();
         return lista;
     }
+    
+    public Object WAM_list_PorNome(String nome) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamVendedor.class);
+        criteria.add(Restrictions.like("wamNome", "%" + nome + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+    
+    public Object WAM_list_PorValor(Double valor) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamVendedor.class);
+        criteria.add(Restrictions.ge("wamValorMeta", valor)); 
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+    
+    public Object WAM_list_PorDesconto(Double desconto) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamVendedor.class);
+        criteria.add(Restrictions.ge("wamDescontoPermitido", desconto));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+    
+    public Object WAM_list_PorNomeValor(String nome, Double valor) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamVendedor.class);
+        criteria.add(Restrictions.like("wamNome", "%" + nome + "%"));
+        criteria.add(Restrictions.ge("wamValorMeta", valor));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+    
+    public Object WAM_list_PorNomeDesconto(String nome, Double desconto) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamVendedor.class);
+        criteria.add(Restrictions.like("wamNome", "%" + nome + "%"));
+        criteria.add(Restrictions.ge("wamDescontoPermitido", desconto));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+   
+    public Object WAM_list_PorValorDesconto(Double valor, Double desconto) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamVendedor.class);
+        criteria.add(Restrictions.ge("wamValorMeta", valor));
+        criteria.add(Restrictions.ge("wamDescontoPermitido", desconto));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+    
+    public Object WAM_list_PorNomeValorDesconto(String nome, Double valor, Double desconto) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(WamVendedor.class);
+        criteria.add(Restrictions.like("wamNome", "%" + nome + "%"));
+        criteria.add(Restrictions.ge("wamValorMeta", valor));
+        criteria.add(Restrictions.ge("wamDescontoPermitido", desconto));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
 
     @Override
     public Object listAll() {

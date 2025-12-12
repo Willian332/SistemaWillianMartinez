@@ -6,7 +6,7 @@ package view;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import bean.WamProduto;
+import bean.WamVenda;
 /**
  *
  * @author user
@@ -34,16 +34,17 @@ public class ControllerConsultaVendas extends AbstractTableModel{
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
-        WamProduto wam_produto = (WamProduto) lista.get(rowIndex);
+        WamVenda wam_venda = (WamVenda) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return wam_produto.getIdProduto();
+            return wam_venda.getIdVenda();
         }
         if (columnIndex == 1) {
-            return wam_produto.getWamNome();
+            return wam_venda.getWamVendedor();
         }
         if (columnIndex == 2) {
-            return wam_produto.getWamValor();
+            return wam_venda.getWamValor();
         }
+      
         
         return "";
     }
@@ -53,11 +54,12 @@ public class ControllerConsultaVendas extends AbstractTableModel{
             return "Código";
         }
         if (columnIndex == 1) {
-            return "Nome";
+            return "Vendedor";
         }
         if (columnIndex == 2) {
             return "Valor";
         }
+       
         
         return "";
     }

@@ -5,6 +5,7 @@
 package dao;
 
 import bean.WamVenda;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -49,29 +50,30 @@ public class VendasDAO extends DaoAbstract {
         return lista;
     }
     
-     public Object listNome(String nome) {
+    public Object listVendedor(String nome) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(WamVenda.class);
-        criteria.add(Restrictions.like("nome", "%" + nome + "%"));
+        Criteria criteria = session.createCriteria(WamVenda.class).createAlias("wamVendedor", "vendedor"); 
+        criteria.add(Restrictions.like("vendedor.wamNome", "%" + nome + "%"));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
     }
         
-    public Object listValor(double valor) {
+    public Object WAM_list_Valor(Double valor) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(WamVenda.class);
-        criteria.add(Restrictions.ge("valorUnitario", valor));
+        criteria.add(Restrictions.ge("wamValor", valor));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
     }
     
-    public Object listNomeValor(String nome, double valor) {
+    public Object WAM_list_NomeValor(String nome, Double valor) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(WamVenda.class);
-        criteria.add(Restrictions.like("nome", "%" + nome + "%"));
-        criteria.add(Restrictions.ge("valorUnitario", valor));
+       
+        Criteria criteria = session.createCriteria(WamVenda.class).createAlias("wamVendedor", "vendedor"); 
+         criteria.add(Restrictions.like("vendedor.wamNome", "%" + nome + "%"));
+        criteria.add(Restrictions.ge("wamValor", valor));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;

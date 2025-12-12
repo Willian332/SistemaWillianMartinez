@@ -299,13 +299,17 @@ public class JDlgVendas extends javax.swing.JDialog {
                         .addComponent(jBtnConfirmar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnPesquisar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBtnAlterarProud)
-                            .addComponent(jBtnIncluirProud)
-                            .addComponent(jBtnExcluirProud))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jBtnAlterarProud)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(32, 32, 32)
+                                    .addComponent(jBtnIncluirProud))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jBtnExcluirProud))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -340,7 +344,7 @@ public class JDlgVendas extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
+                        .addGap(69, 69, 69)
                         .addComponent(jBtnIncluirProud)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jBtnAlterarProud)
@@ -377,7 +381,7 @@ public class JDlgVendas extends javax.swing.JDialog {
             return;
         } else {
             incluir = false;
-            Util.habilitar(true , jTextCodigoVEnda, jCboCliente, jCboVendedor, jTextValor, jTextDesconto, jTxtTotal, jBtnConfirmar, jBtnCancelar);
+            Util.habilitar(true , jTextCodigoVEnda, jCboCliente, jCboVendedor, jTextValor, jTextDesconto, jTxtTotal, jBtnConfirmar, jBtnCancelar, jBtnIncluirProud, jBtnAlterarProud, jBtnExcluirProud);
             Util.habilitar(false , jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         }
     }//GEN-LAST:event_jBtnAlterarActionPerformed
