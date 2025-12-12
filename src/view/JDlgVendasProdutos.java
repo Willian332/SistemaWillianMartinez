@@ -19,6 +19,7 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
 
     
         JDlgVendas jDlgVendas;
+        private boolean incluir;
     /**
      * Creates new form JDlgVendasProdutos
      */
@@ -35,11 +36,25 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
         }
         
         
+        jComboProduto.setToolTipText("Selecione o produto para adicionar à venda");
+        jTextQuantidade.setToolTipText("Quantidade do produto (apenas números)");
+        jTextValorUnit.setToolTipText("Valor unitário do produto (use ponto para decimais)");
+        jTexTotal.setToolTipText("Total da venda do produto");
+        jBtnOK.setToolTipText("Confirmar e adicionar produto à venda");
+        jBtnCancelar.setToolTipText("Cancelar operação e fechar janela");
+        
+        
     }
     
     
-     public void setWam_TelaPai(JDlgVendas jDlgVendas) {
-        this.jDlgVendas = jDlgVendas;
+     public void setWam_TelaPai(JDlgVendas jDlgVendas, WamVendaProduto wamVendaProduto) {
+         this.jDlgVendas = jDlgVendas;
+        incluir = true;
+        if(wamVendaProduto != null){
+            incluir = false;
+            jComboProduto.setSelectedItem(wamVendaProduto.getWamProduto());
+            jTextQuantidade.setText(Util.intParaString(wamVendaProduto.getWamQuantidade()));
+        }
     }
 
     /**
@@ -177,7 +192,7 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
-         WamVendaProduto wamVendaProduto = new WamVendaProduto();
+        WamVendaProduto wamVendaProduto = new WamVendaProduto();
         wamVendaProduto.setWamProduto((WamProduto) jComboProduto.getSelectedItem());
         wamVendaProduto.setWamQuantidade(Util.strParaInt(jTextQuantidade.getText()) );
         wamVendaProduto.setWamValorUnitario(Util.strParaDouble(jTextValorUnit.getText()) );                

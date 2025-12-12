@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import tools.Util;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -66,6 +67,10 @@ public class JDlgVendas extends javax.swing.JDialog {
         wamVenda.setWamValorFinal(Util.strParaDouble(jTxtTotal.getText()));
     
     return wamVenda;  
+    }
+    
+     public JTable getjTblWam_VendasProdutos() {
+        return jTable1;
     }
      
      public void beanView(WamVenda wamVenda) {
@@ -460,14 +465,21 @@ public class JDlgVendas extends javax.swing.JDialog {
     private void jBtnIncluirProudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirProudActionPerformed
         // TODO add your handling code here:
         JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(null, true);
-        jDlgVendasProdutos.setWam_TelaPai(this);
+        jDlgVendasProdutos.setWam_TelaPai(this, null);
         jDlgVendasProdutos.setVisible(true);
         
     }//GEN-LAST:event_jBtnIncluirProudActionPerformed
 
     private void jBtnAlterarProudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProudActionPerformed
         // TODO add your handling code here:
+         if (jTable1.getSelectedRow() == -1) { 
+            Util.adivertencia("Pesquise algum Produto antes de alterar!");
+            return;
+        }
+        
         JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(null, true);
+        WamVendaProduto rtcVendasProdutos = controllerVendasProdutos.getBean(jTable1.getSelectedRow());
+        jDlgVendasProdutos.setWam_TelaPai(this, rtcVendasProdutos);
         jDlgVendasProdutos.setVisible(true);
     }//GEN-LAST:event_jBtnAlterarProudActionPerformed
 

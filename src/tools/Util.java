@@ -59,6 +59,10 @@ public class Util {
             }
     }
     
+    public static void adivertencia(String cad) {
+        JOptionPane.showMessageDialog(null, cad, "Aviso", JOptionPane.WARNING_MESSAGE);
+    }
+    
     public static int strParaInt(String cad){
         return Integer.parseInt(cad);
     }
